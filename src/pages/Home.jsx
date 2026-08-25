@@ -1,15 +1,26 @@
-import '../styles/layout.css'
+import Hero            from '../components/home/Hero'
+import Ticker          from '../components/shared/Ticker'
+import MissionStatement from '../components/home/MissionStatement'
+import RaceSchedule    from '../components/home/RaceSchedule'
+import SponsorSection  from '../components/home/SponsorSection'
+
+const TICKER_ITEMS = [
+  'Nine Lives Cycling Collective',
+  'Femmes & Themmes',
+  '2026 Race Season',
+  'The Scratching Post',
+  'Founded 2020',
+]
 
 export default function Home() {
   return (
     <main className="page">
-      <div className="page-placeholder">
-        <p className="page-placeholder__label">Phase 3</p>
-        <h1 className="page-placeholder__title">Home</h1>
-        <p className="page-placeholder__note">
-          Mission statement · Sponsor carousel · Race schedule · Featured video · Featured merch · Instagram feed
-        </p>
-      </div>
+      <Hero />
+      <Ticker items={TICKER_ITEMS} />
+      <MissionStatement />
+      <Ticker items={TICKER_ITEMS} inverted speed={28} />
+      <RaceSchedule />
+      <SponsorSection />
     </main>
   )
 }
