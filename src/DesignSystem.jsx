@@ -171,7 +171,7 @@ export default function DesignSystem() {
             <span className="tag tag--default">Gravel</span>
             <span className="tag tag--default">Cyclocross</span>
             <span className="tag tag--green">Criterium</span>
-            <span className="tag tag--olive">Track</span>
+            <span className="tag tag--purple">Track</span>
             <span className="tag tag--neon">Featured</span>
           </div>
         </Section>
@@ -295,7 +295,7 @@ function MockRiderCard({ number, name, pronouns, disciplines }) {
         <p className="rider-card__pronouns">{pronouns}</p>
         <div className="rider-card__tags">
           {disciplines.map((d) => (
-            <span key={d} className="tag tag--olive">{d}</span>
+            <span key={d} className="tag tag--purple">{d}</span>
           ))}
         </div>
         <p className="rider-card__bio">Hometown, riding background, and what drives them — short and punchy.</p>
