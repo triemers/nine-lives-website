@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import '../../styles/layout.css'
+import '../../styles/nav.scss'
 
 const NAV_LINKS = [
   { to: '/',      label: 'Home' },
@@ -22,7 +22,7 @@ export default function Nav() {
       <div className="nav__inner">
 
         <NavLink to="/" className="nav__logo" onClick={closeMenu}>
-          Nine Lives
+          Nine Lives Cycling Collective
         </NavLink>
 
         <button

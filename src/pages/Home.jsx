@@ -9,11 +9,11 @@ import athleticLogo     from '../assets/sponsors/athletic.png'
 
 const TICKER_ITEMS = [
   'Nine Lives Cycling Collective',
-  { logo: btdLogo,      name: 'Bike Tires Direct' },
+  { logo: btdLogo,      name: 'Bike Tires Direct', size: 'lg' },
   'Femmes & Themmes',
   { logo: castelliLogo, name: 'Castelli' },
   'Founded 2025',
-  { logo: athleticLogo, name: 'Athletic Brewing' },
+  { logo: athleticLogo, name: 'The Athletic Community', crop: true },
 ]
 
 export default function Home() {

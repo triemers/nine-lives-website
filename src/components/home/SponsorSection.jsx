@@ -1,5 +1,5 @@
 import { sponsors } from '../../data/sponsors'
-import '../../styles/home.css'
+import '../../styles/sponsors.scss'
 
 export default function SponsorSection() {
   return (

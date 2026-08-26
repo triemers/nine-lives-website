@@ -1,0 +1,57 @@
+.hero {
+  min-height: calc(100vh - 60px);
+  background: var(--gradient-hero);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  gap: var(--space-8);
+  padding: var(--space-16) var(--space-8);
+
+  &__logo-wrap {
+    perspective: 700px;
+    flex-shrink: 0;
+  }
+
+  &__logo {
+    width: clamp(180px, 28vw, 340px);
+    filter: invert(1);
+    animation: logo-spin-3d 8s linear infinite;
+    display: block;
+  }
+
+  &__scroll-hint {
+    position: absolute;
+    bottom: var(--space-8);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    z-index: 1;
+  }
+
+  &__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+    animation: scroll-fade 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes logo-spin-3d {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+@keyframes scroll-fade {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.1); }
+}

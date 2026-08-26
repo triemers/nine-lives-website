@@ -1,0 +1,53 @@
+.sponsors {
+  padding-block: var(--space-16);
+  border-top: 1px solid var(--color-gray-700);
+
+  &__heading {
+    margin-bottom: var(--space-8);
+  }
+
+  &__row {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: var(--space-16);
+    height: 120px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding-block: 8px;
+  }
+
+  &__logo {
+    height: 100%;
+    width: auto;
+    max-width: 240px;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: opacity var(--duration-base) var(--ease-out);
+
+    &--invert {
+      filter: brightness(0) invert(1);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__name-fallback {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: var(--weight-black);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-gray-300);
+    transition: color var(--duration-base) var(--ease-out);
+
+    &:hover {
+      color: var(--color-white);
+    }
+  }
+}

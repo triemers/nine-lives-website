@@ -1,22 +1,21 @@
 import { schedule } from '../../data/schedule'
-import '../../styles/home.css'
+import '../../styles/schedule.scss'
 
-const upcoming  = schedule.filter((r) => r.status === 'upcoming')
-const completed = schedule.filter((r) => r.status === 'completed')
+const sorted = [
+  ...schedule.filter((r) => r.status === 'upcoming'),
+  ...schedule.filter((r) => r.status === 'completed'),
+]
 
 export default function RaceSchedule() {
   return (
     <section className="schedule section">
       <div className="container">
 
-        <h2 className="schedule__heading display-lg">Upcoming Races</h2>
+        <h2 className="schedule__heading display-lg">Race Schedule</h2>
         <ul className="schedule__list">
-          {upcoming.map((race) => <RaceRow key={race.id} race={race} />)}
-        </ul>
-
-        <h2 className="schedule__heading display-lg" style={{ marginTop: 'var(--space-16)' }}>Past Races</h2>
-        <ul className="schedule__list">
-          {completed.map((race) => <RaceRow key={race.id} race={race} past />)}
+          {sorted.map((race) => (
+            <RaceRow key={race.id} race={race} past={race.status === 'completed'} />
+          ))}
         </ul>
 
       </div>
@@ -36,8 +35,7 @@ function RaceRow({ race, past = false }) {
       {race.blogPostUrl && (
         <a
           href={race.blogPostUrl}
-          className="btn btn--ghost"
-          style={{ fontSize: 'var(--text-xs)' }}
+          className="btn btn--ghost btn--sm"
         >
           Read Recap →
         </a>

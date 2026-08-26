@@ -26,7 +26,7 @@ export const sponsors = [
   },
   {
     id:         'athletic',
-    name:       'Athletic Brewing',
+    name:       'The Athletic Community',
     logo:       athleticLogo,
     filterMode: 'invert',
     url:        'https://theathleticcommunity.com',

@@ -1,0 +1,110 @@
+.footer {
+  background-color: var(--color-black);
+  border-top: 1px solid var(--color-gray-700);
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-8);
+  padding-inline: 20px;
+  margin-top: var(--space-32);
+
+  &__container {
+    max-width: var(--container-max);
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-12);
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid var(--color-gray-700);
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  &__brand-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: var(--weight-black);
+    letter-spacing: var(--tracking-tight);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: var(--space-3);
+  }
+
+  &__brand-tagline {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+    line-height: 1.5;
+    max-width: 220px;
+  }
+
+  &__nav-label,
+  &__social-label {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-4);
+  }
+
+  &__nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  &__nav-link {
+    font-size: var(--text-sm);
+    color: var(--color-gray-300);
+    transition: color var(--duration-base) var(--ease-out);
+
+    &:hover {
+      color: var(--color-white);
+    }
+  }
+
+  &__social-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  &__social-link {
+    font-size: var(--text-sm);
+    color: var(--color-gray-300);
+    transition: color var(--duration-base) var(--ease-out);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    &:hover {
+      color: var(--color-green);
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-8);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__copyright {
+    font-size: var(--text-xs);
+    color: var(--color-gray-500);
+    letter-spacing: var(--tracking-wide);
+  }
+}

@@ -1,19 +1,7 @@
 import fishbone from '../../assets/decorative/fishbone.png'
-import '../../styles/tokens.css'
+import '../../styles/ticker.scss'
 
-/*
-  Reusable scrolling ticker.
-  items    — array of strings OR objects { logo, name } for sponsor logos
-  inverted — white background, black text
-  speed    — animation duration in seconds (higher = slower)
-
-  Loop gap fix: spacing lives in padding-right on each item (not gap on the track)
-  so translateX(-50%) lands exactly at the start of copy 2 every time.
-*/
 export default function Ticker({ items, inverted = false, speed = 22 }) {
-  const logoFilter   = inverted ? 'brightness(0)'          : 'brightness(0) invert(1)'
-  const boneFilter   = inverted ? 'brightness(0)'          : 'invert(1)'
-
   return (
     <div
       className={`ticker${inverted ? ' ticker--inverted' : ''}`}
@@ -21,45 +9,25 @@ export default function Ticker({ items, inverted = false, speed = 22 }) {
     >
       <div
         className="ticker__track"
-        style={{ animationDuration: `${speed}s`, gap: 0 }}
+        style={{ animationDuration: `${speed}s` }}
       >
         {[0, 1].map((copyIndex) =>
           items.map((item, itemIndex) => (
-            <span
-              key={`${copyIndex}-${itemIndex}`}
-              style={{
-                display:      'flex',
-                alignItems:   'center',
-                gap:          'var(--space-6)',
-                paddingRight: 'var(--space-8)',
-                flexShrink:   0,
-              }}
-            >
+            <span key={`${copyIndex}-${itemIndex}`} className="ticker__item-wrap">
               {typeof item === 'string' ? (
                 <span className="ticker__item">{item}</span>
+              ) : item.crop ? (
+                <span className="ticker__logo-wrap">
+                  <img src={item.logo} alt={item.name} className="ticker__logo" />
+                </span>
               ) : (
                 <img
                   src={item.logo}
                   alt={item.name}
-                  style={{
-                    height: '22px',
-                    width:  'auto',
-                    filter: logoFilter,
-                    opacity: 0.8,
-                  }}
+                  className={`ticker__logo${item.size ? ` ticker__logo--${item.size}` : ''}`}
                 />
               )}
-              <img
-                src={fishbone}
-                alt=""
-                style={{
-                  height:    '18px',
-                  width:     'auto',
-                  filter:    boneFilter,
-                  opacity:   0.45,
-                  flexShrink: 0,
-                }}
-              />
+              <img src={fishbone} alt="" className="ticker__fishbone" />
             </span>
           ))
         )}

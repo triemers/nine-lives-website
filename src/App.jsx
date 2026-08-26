@@ -7,6 +7,7 @@ import Media from './pages/Media'
 import Blog from './pages/Blog'
 import Merch from './pages/Merch'
 import './styles/tokens.css'
+import './styles/layout.scss'
 
 export default function App() {
   return (

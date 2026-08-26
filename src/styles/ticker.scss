@@ -1,0 +1,84 @@
+// ── Ticker / Marquee ────────────────────────────────────────────
+//
+// Loop gap fix: spacing lives in padding-right on each item-wrap (not gap on
+// the track) so translateX(-50%) lands exactly at the start of copy 2.
+//
+// Logo crop: .ticker__logo-wrap clips Athletic's transparent top/bottom 30%.
+// Image is rendered at 105px (= 42 / 0.4) so the center 40% fills the 42px
+// visible window. translateY(-30%) offsets the hidden top portion.
+
+.ticker {
+  display: flex;
+  overflow: hidden;
+  background-color: var(--color-black);
+  border-top: 1px solid var(--color-gray-700);
+  border-bottom: 1px solid var(--color-gray-700);
+  padding-block: var(--space-3);
+
+  &--inverted {
+    background-color: var(--color-white);
+
+    .ticker__item     { color: var(--color-black); }
+    .ticker__logo     { filter: brightness(0); }
+    .ticker__fishbone { filter: brightness(0); }
+  }
+}
+
+.ticker__track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  animation: ticker-scroll 22s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.ticker__item-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding-right: var(--space-8);
+  flex-shrink: 0;
+}
+
+.ticker__item {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: var(--weight-black);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-white);
+  flex-shrink: 0;
+}
+
+.ticker__logo {
+  height: 42px;
+  width: auto;
+  opacity: 0.8;
+  filter: brightness(0) invert(1);
+
+  &--lg { height: 56px; }
+}
+
+.ticker__logo-wrap {
+  height: 42px;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  .ticker__logo {
+    height: 105px; // 42 / 0.4 — renders full image so center 40% fills the window
+    transform: translateY(-30%); // hides the dead top 30%
+  }
+}
+
+.ticker__fishbone {
+  height: 18px;
+  width: auto;
+  opacity: 0.45;
+  flex-shrink: 0;
+  filter: invert(1);
+}
