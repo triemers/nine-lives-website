@@ -29,10 +29,8 @@ export default function About() {
       </section>
 
       <section className="about-riders">
-        <div className="container">
-          <div className="about-riders__header">
-            <h2>Meet the Team</h2>
-          </div>
+        <div className="about-riders__header">
+          <h2>Meet the Team</h2>
         </div>
         <div className="about-riders__grid">
           {RIDERS.map(rider => (
