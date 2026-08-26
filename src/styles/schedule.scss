@@ -105,8 +105,16 @@
     font-weight: var(--weight-medium);
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
-    color: var(--color-gray-300);
+    color: var(--color-pink);
     opacity: 0.5;
+  }
+
+  &__links .btn--ghost {
+    color: var(--color-pink);
+
+    &:hover {
+      color: var(--color-white);
+    }
   }
 
   // Tags in the schedule read as plain labels, not buttons

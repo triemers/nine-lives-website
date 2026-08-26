@@ -2,6 +2,7 @@ import Hero             from '../components/home/Hero'
 import Ticker           from '../components/shared/Ticker'
 import MissionStatement from '../components/home/MissionStatement'
 import RaceSchedule     from '../components/home/RaceSchedule'
+import MediaStrip       from '../components/home/MediaStrip'
 import SponsorSection   from '../components/home/SponsorSection'
 import btdLogo          from '../assets/sponsors/btd.png'
 import castelliLogo     from '../assets/sponsors/castelli.png'
@@ -23,6 +24,7 @@ export default function Home() {
       <Ticker items={TICKER_ITEMS} />
       <MissionStatement />
       <RaceSchedule />
+      <MediaStrip />
       <SponsorSection />
     </main>
   )
