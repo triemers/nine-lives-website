@@ -19,7 +19,7 @@ export const RIDERS = [
     pronouns: 'They/Them',
     photo: cadePic,
     photoPosition: 'top center',
-    bio: "Relative newbie to cycling, but no stranger to competition, Cade is developing into an absolute dirt demon. Their first love (besides their wife & coach Chloë of course) is cross country mountain biking, but gravel and cyclocross come in close behind. Cade will do almost anything for some quality ice cream and can probably out last you on a mechanical bull. They are on life 4 or 5 of 9.",
+    bio: "2026 Oregon Non Binary XC MTB State Champ, avid Cyclocross racer, and certified Team Parent, Cade will do almost anything for some quality ice cream and can probably out last you on a mechanical bull. They are working hard on gravel endurance skills and developing rapidly as a competitive cyclist who is relatively new to the sport and elite competition. Cade is on life 5 of 9.",
     disciplines: ['XC MTB', 'Gravel', 'Cyclocross'],
   },
   {
