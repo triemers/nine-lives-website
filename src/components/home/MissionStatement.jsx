@@ -7,6 +7,16 @@ export default function MissionStatement() {
     <section className="mission section">
       <div className="container mission__inner">
 
+        <div className="mission__photo-frame">
+          <div className="mission__photo-wrap grain grain--heavy">
+            <img
+              src={photo}
+              alt="Nine Lives riders at MidSouth Nonbinary Pro Race"
+              className="mission__photo"
+            />
+          </div>
+        </div>
+
         <div className="mission__content">
           <div className="mission__quote-block">
             <blockquote className="mission__quote">
@@ -27,16 +37,6 @@ export default function MissionStatement() {
             <Link to="/about" className="btn btn--gradient">
               <span>Who We Are →</span>
             </Link>
-          </div>
-        </div>
-
-        <div className="mission__photo-frame">
-          <div className="mission__photo-wrap grain grain--heavy">
-            <img
-              src={photo}
-              alt="Nine Lives riders at MidSouth Nonbinary Pro Race"
-              className="mission__photo"
-            />
           </div>
         </div>
 

@@ -27,19 +27,28 @@ function RaceRow({ race, past = false }) {
   return (
     <li className={`schedule__race${past ? ' schedule__race--past' : ''}`}>
       <span className="schedule__date">{race.date}</span>
-      <span className="schedule__name">{race.name}</span>
+      <div className="schedule__name-group">
+        <span className="schedule__name">{race.name}</span>
+        {race.links.length > 0 && (
+          <div className="schedule__links">
+            {race.links.map((link) =>
+              link.url ? (
+                <a key={link.label} href={link.url} className="btn btn--ghost btn--sm">
+                  {link.label} →
+                </a>
+              ) : (
+                <span key={link.label} className="schedule__link--pending">
+                  {link.label}
+                </span>
+              )
+            )}
+          </div>
+        )}
+      </div>
       <span className="schedule__location">{race.location}</span>
       <span className={`tag tag--${past ? 'default' : 'green'}`}>
         {race.discipline}
       </span>
-      {race.blogPostUrl && (
-        <a
-          href={race.blogPostUrl}
-          className="btn btn--ghost btn--sm"
-        >
-          Read Recap →
-        </a>
-      )}
     </li>
   )
 }

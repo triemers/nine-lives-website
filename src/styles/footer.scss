@@ -37,7 +37,7 @@
 
   &__brand-tagline {
     font-size: var(--text-sm);
-    color: var(--color-gray-500);
+    color: var(--color-gray-300);
     line-height: 1.5;
     max-width: 220px;
   }
@@ -48,7 +48,7 @@
     font-weight: var(--weight-medium);
     letter-spacing: var(--tracking-widest);
     text-transform: uppercase;
-    color: var(--color-gray-500);
+    color: var(--color-gray-300);
     margin-bottom: var(--space-4);
   }
 
@@ -104,7 +104,7 @@
 
   &__copyright {
     font-size: var(--text-xs);
-    color: var(--color-gray-500);
+    color: var(--color-gray-300);
     letter-spacing: var(--tracking-wide);
   }
 }

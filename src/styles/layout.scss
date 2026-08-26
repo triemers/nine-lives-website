@@ -19,7 +19,7 @@
 
   &__label {
     font-size: var(--text-xs);
-    color: var(--color-gray-500);
+    color: var(--color-gray-300);
     letter-spacing: var(--tracking-widest);
     text-transform: uppercase;
   }
@@ -35,7 +35,7 @@
 
   &__note {
     font-size: var(--text-sm);
-    color: var(--color-gray-500);
+    color: var(--color-gray-300);
     margin-top: var(--space-4);
     border-left: 2px solid var(--color-gray-700);
     padding-left: var(--space-4);
