@@ -19,7 +19,7 @@ export default function Nav() {
 
   return (
     <nav className="nav" aria-label="Main navigation">
-      <div className="container nav__inner">
+      <div className="nav__inner">
 
         <NavLink to="/" className="nav__logo" onClick={closeMenu}>
           Nine Lives

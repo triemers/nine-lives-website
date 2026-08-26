@@ -8,8 +8,7 @@ const TICKER_ITEMS = [
   'Nine Lives Cycling Collective',
   'Femmes & Themmes',
   '2026 Race Season',
-  'The Scratching Post',
-  'Founded 2020',
+  'Founded 2025',
 ]
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
       <Hero />
       <Ticker items={TICKER_ITEMS} />
       <MissionStatement />
-      <Ticker items={TICKER_ITEMS} inverted speed={28} />
       <RaceSchedule />
       <SponsorSection />
     </main>

@@ -18,16 +18,21 @@
   padding: var(--space-16) var(--space-8);
 }
 
-.hero__logo {
-  width: clamp(180px, 28vw, 340px);
-  filter: invert(1);
-  animation: logo-spin 30s linear infinite;
+.hero__logo-wrap {
+  perspective: 700px;
   flex-shrink: 0;
 }
 
-@keyframes logo-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+.hero__logo {
+  width: clamp(180px, 28vw, 340px);
+  filter: invert(1);
+  animation: logo-spin-3d 8s linear infinite;
+  display: block;
+}
+
+@keyframes logo-spin-3d {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
 }
 
 .hero__tagline {
@@ -164,10 +169,11 @@
 }
 
 .sponsors__logo {
-  height: 36px;
+  height: 72px;
   width: auto;
+  max-width: 220px;
   object-fit: contain;
-  opacity: 0.75;
+  opacity: 0.8;
   transition: opacity var(--duration-base) var(--ease-out);
 }
 
@@ -224,7 +230,7 @@
 
 .schedule__race {
   display: grid;
-  grid-template-columns: 16px 200px 1fr auto auto;
+  grid-template-columns: 200px 1fr auto auto;
   align-items: center;
   gap: var(--space-6);
   padding-block: var(--space-6);
@@ -240,20 +246,9 @@
   border-top-color: var(--color-gray-500);
 }
 
-.schedule__status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.schedule__status-dot--upcoming {
-  background-color: var(--color-green);
-  box-shadow: var(--glow-green-sm);
-}
-
-.schedule__status-dot--completed {
-  background-color: var(--color-gray-700);
+.schedule__race--past .schedule__name,
+.schedule__race--past .schedule__date {
+  color: var(--color-gray-500);
 }
 
 .schedule__date {
@@ -284,19 +279,13 @@
 
 @media (max-width: 900px) {
   .schedule__race {
-    grid-template-columns: 16px 1fr;
+    grid-template-columns: 1fr auto;
     grid-template-rows: auto auto auto;
-    gap: var(--space-2) var(--space-4);
+    gap: var(--space-1) var(--space-4);
   }
 
-  .schedule__status-dot {
-    grid-row: 1 / 4;
-    align-self: start;
-    margin-top: 6px;
-  }
-
-  .schedule__date     { font-size: 0.875rem; color: var(--color-gray-500); }
-  .schedule__name     { grid-column: 2; font-size: 1.25rem; }
-  .schedule__location { grid-column: 2; text-align: left; }
-  .schedule__tag      { grid-column: 2; }
+  .schedule__date     { grid-column: 1; font-size: 0.8rem; color: var(--color-gray-500); }
+  .schedule__name     { grid-column: 1 / -1; font-size: 1.25rem; }
+  .schedule__location { grid-column: 1; text-align: left; }
+  .schedule__tag      { grid-column: 2; grid-row: 1; align-self: start; }
 }
