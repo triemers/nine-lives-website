@@ -9,16 +9,12 @@ export default function RaceSchedule() {
     <section className="schedule section">
       <div className="container">
 
-        <div className="schedule__header">
-          <p className="schedule__label">2026 Race Calendar</p>
-        </div>
+        <h2 className="schedule__heading display-lg">Upcoming Races</h2>
         <ul className="schedule__list">
           {upcoming.map((race) => <RaceRow key={race.id} race={race} />)}
         </ul>
 
-        <div className="schedule__header" style={{ marginTop: 'var(--space-16)' }}>
-          <p className="schedule__label">Past Races</p>
-        </div>
+        <h2 className="schedule__heading display-lg" style={{ marginTop: 'var(--space-16)' }}>Past Races</h2>
         <ul className="schedule__list">
           {completed.map((race) => <RaceRow key={race.id} race={race} past />)}
         </ul>

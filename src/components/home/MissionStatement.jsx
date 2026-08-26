@@ -7,7 +7,6 @@ export default function MissionStatement() {
       <div className="container mission__inner">
 
         <div className="mission__quote-block">
-          <p className="label" style={{ color: 'var(--color-gray-500)' }}>Mission</p>
           <blockquote className="mission__quote">
             We were tired of fighting for{' '}
             <em>a seat at the table,</em>{' '}

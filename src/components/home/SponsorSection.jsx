@@ -5,7 +5,7 @@ export default function SponsorSection() {
   return (
     <section className="sponsors section">
       <div className="container">
-        <p className="sponsors__label">Supported By</p>
+        <h2 className="sponsors__heading display-lg">Supported By</h2>
         <div className="sponsors__row">
           {sponsors.map((sponsor) => (
             <SponsorLogo key={sponsor.id} sponsor={sponsor} />

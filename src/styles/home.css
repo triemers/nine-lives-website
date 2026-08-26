@@ -148,11 +148,7 @@
   border-bottom: 1px solid var(--color-gray-700);
 }
 
-.sponsors__label {
-  font-size: var(--text-xs);
-  color: var(--color-gray-500);
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
+.sponsors__heading {
   margin-bottom: var(--space-8);
 }
 
@@ -206,20 +202,8 @@
   padding-block: var(--space-24);
 }
 
-.schedule__header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+.schedule__heading {
   margin-bottom: var(--space-8);
-  flex-wrap: wrap;
-  gap: var(--space-4);
-}
-
-.schedule__label {
-  font-size: var(--text-xs);
-  color: var(--color-gray-500);
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
 }
 
 .schedule__list {
