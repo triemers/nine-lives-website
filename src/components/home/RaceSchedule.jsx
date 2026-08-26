@@ -11,7 +11,7 @@ export default function RaceSchedule() {
     <section className="schedule section">
       <div className="container">
 
-        <h2 className="schedule__heading display-lg">Race Schedule</h2>
+        <h2 className="schedule__heading">Race Schedule</h2>
         <ul className="schedule__list">
           {sorted.map((race) => (
             <RaceRow key={race.id} race={race} past={race.status === 'completed'} />

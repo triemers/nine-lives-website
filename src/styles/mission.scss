@@ -1,6 +1,5 @@
 .mission {
   padding-block: var(--space-24);
-  border-bottom: 1px solid var(--color-gray-700);
 
   &__inner {
     display: grid;
@@ -21,12 +20,13 @@
   }
 
   &__quote {
-    font-family: var(--font-display);
+    font-family: var(--font-serif);
+    font-style: italic;
     font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: var(--weight-black);
-    line-height: 1;
-    letter-spacing: var(--tracking-tight);
-    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: normal;
+    text-transform: none;
     color: var(--color-white);
   }
 

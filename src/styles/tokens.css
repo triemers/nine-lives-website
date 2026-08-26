@@ -2,7 +2,7 @@
    NINE LIVES CYCLING COLLECTIVE — Design Tokens
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;700&display=swap');
 
 :root {
 
@@ -42,6 +42,7 @@
   ---------------------------------------------------------- */
 
   --font-display: 'Barlow Condensed', Arial Narrow, sans-serif;
+  --font-serif:   'Cormorant Garamond', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
 
   --text-display-2xl: clamp(5rem, 12vw, 10rem);
@@ -147,6 +148,18 @@ body {
   color: var(--color-white);
   background-color: var(--color-black);
   line-height: 1.6;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+h2 {
+  font-size: var(--text-display-md);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 img, video {
