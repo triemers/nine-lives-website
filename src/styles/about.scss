@@ -1,12 +1,4 @@
 .about-hero {
-  padding-block: var(--space-24);
-  padding-inline: 5%;
-
-  &__label {
-    color: var(--color-gray-300);
-    margin-bottom: var(--space-4);
-  }
-
   &__title {
     max-width: 640px;
   }
@@ -21,28 +13,16 @@
 }
 
 .about-story,
-.about-riders,
-.about-values {
-  border-top: 1px solid var(--color-gray-700);
-  padding-block: var(--space-24);
-  padding-inline: 5%;
-}
-
-.about-story,
 .about-values {
   &__inner {
     display: grid;
-    grid-template-columns: 180px 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: var(--space-16);
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
       gap: var(--space-8);
     }
-  }
-
-  &__sidebar {
-    padding-top: var(--space-1);
   }
 
   &__text {
@@ -58,29 +38,56 @@
   }
 }
 
-.about-riders {
-  &__header {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    margin-bottom: var(--space-12);
+.about-sidebar-label {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  line-height: 1.1;
+  color: var(--color-white);
+}
 
-    .label {
-      color: var(--color-gray-300);
+.about-riders {
+  padding-top: var(--space-24);
+
+  &__header {
+    padding-bottom: var(--space-32);
+    text-align: center;
+
+    h2 {
+      font-size: clamp(4rem, 14vw, 15rem);
+      line-height: 0.9;
+      white-space: nowrap;
     }
   }
 
+  // Adjust overlap by changing margin-top here
   &__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-6);
+    margin-inline: 2.5%;
+    margin-top: -160px;
+    position: relative;
+    z-index: var(--z-raised);
+    padding-bottom: var(--space-24);
 
     @media (max-width: 900px) {
       grid-template-columns: repeat(2, 1fr);
+      margin-top: -80px;
     }
 
     @media (max-width: 480px) {
       grid-template-columns: 1fr;
+      margin-top: -40px;
     }
+  }
+
+  // Cards semi-transparent so the heading bleeds through behind them
+  .rider-card {
+    background-color: rgba(26, 26, 26, 0.72);
+    backdrop-filter: blur(6px);
   }
 }

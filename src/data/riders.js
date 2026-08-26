@@ -1,7 +1,7 @@
 import chloePic from '../assets/images/chloe-roster.webp'
 import cadePic   from '../assets/images/cade-roster.webp'
 import robinPic  from '../assets/images/robin-roster.webp'
-import toriPic   from '../assets/images/tori-roster.jpg'
+import toriPic   from '../assets/images/tori-roster-2.jpg'
 
 export const RIDERS = [
   {
