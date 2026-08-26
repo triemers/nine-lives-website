@@ -529,6 +529,43 @@ a {
   color: var(--color-white);
 }
 
+/* Gradient fill — sweeps green→purple on hover */
+.btn--gradient {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+  transition:
+    color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.btn--gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--color-green) 0%, var(--color-purple) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.35s var(--ease-out);
+  z-index: 0;
+}
+
+.btn--gradient:hover {
+  color: var(--color-black);
+  border-color: var(--color-purple);
+}
+
+.btn--gradient:hover::before {
+  transform: translateX(0);
+}
+
+.btn--gradient span {
+  position: relative;
+  z-index: 1;
+}
+
 .btn--lg {
   font-size: var(--text-base);
   padding: var(--space-4) var(--space-8);

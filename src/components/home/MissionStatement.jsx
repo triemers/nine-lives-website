@@ -8,9 +8,7 @@ export default function MissionStatement() {
 
         <div className="mission__quote-block">
           <blockquote className="mission__quote">
-            We were tired of fighting for{' '}
-            <em>a seat at the table,</em>{' '}
-            so we built our own.
+            We were tired of fighting for a seat at the table, so we built our own.
           </blockquote>
           <p className="mission__attribution">— Chloe Spritz, Team Director</p>
         </div>
@@ -24,8 +22,8 @@ export default function MissionStatement() {
             We fight for representation in cycling. Competitive racing is for
             everyone — across all bodies, backgrounds, and walks of life.
           </p>
-          <Link to="/about" className="btn btn--secondary">
-            Who We Are →
+          <Link to="/about" className="btn btn--gradient">
+            <span>Who We Are →</span>
           </Link>
         </div>
 

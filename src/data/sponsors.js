@@ -29,7 +29,7 @@ export const sponsors = [
     name:       'Athletic Brewing',
     logo:       athleticLogo,
     filterMode: 'invert',
-    url:        'https://athleticbrewing.com',
+    url:        'https://theathleticcommunity.com',
   },
   {
     id:         'kuat',

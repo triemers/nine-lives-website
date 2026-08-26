@@ -1,14 +1,19 @@
-import Hero            from '../components/home/Hero'
-import Ticker          from '../components/shared/Ticker'
+import Hero             from '../components/home/Hero'
+import Ticker           from '../components/shared/Ticker'
 import MissionStatement from '../components/home/MissionStatement'
-import RaceSchedule    from '../components/home/RaceSchedule'
-import SponsorSection  from '../components/home/SponsorSection'
+import RaceSchedule     from '../components/home/RaceSchedule'
+import SponsorSection   from '../components/home/SponsorSection'
+import btdLogo          from '../assets/sponsors/btd.png'
+import castelliLogo     from '../assets/sponsors/castelli.png'
+import athleticLogo     from '../assets/sponsors/athletic.png'
 
 const TICKER_ITEMS = [
   'Nine Lives Cycling Collective',
+  { logo: btdLogo,      name: 'Bike Tires Direct' },
   'Femmes & Themmes',
-  '2026 Race Season',
+  { logo: castelliLogo, name: 'Castelli' },
   'Founded 2025',
+  { logo: athleticLogo, name: 'Athletic Brewing' },
 ]
 
 export default function Home() {

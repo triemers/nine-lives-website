@@ -105,12 +105,10 @@
   line-height: 1.0;
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;
-  color: var(--color-white);
-}
-
-.mission__quote em {
-  font-style: normal;
-  color: var(--color-green);
+  background: linear-gradient(90deg, var(--color-green) 0%, var(--color-purple) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .mission__attribution {
@@ -145,7 +143,7 @@
 
 .sponsors {
   padding-block: var(--space-16);
-  border-bottom: 1px solid var(--color-gray-700);
+  border-top: 1px solid var(--color-gray-700);
 }
 
 .sponsors__heading {
@@ -154,20 +152,22 @@
 
 .sponsors__row {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
-  gap: var(--space-12);
+  gap: var(--space-16);
+  height: 120px;
 }
 
 .sponsors__item {
   display: flex;
   align-items: center;
+  padding-block: 8px;
 }
 
 .sponsors__logo {
-  height: 72px;
+  height: 100%;
   width: auto;
-  max-width: 220px;
+  max-width: 240px;
   object-fit: contain;
   opacity: 0.8;
   transition: opacity var(--duration-base) var(--ease-out);
