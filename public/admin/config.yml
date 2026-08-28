@@ -25,6 +25,7 @@ collections:
         multiple: true
         required: false
         options: ["Cyclocross", "XC MTB", "Gravel", "Bikepacking"]
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "Optional. Leave blank to auto-generate from the first paragraph of the body." }
       - { label: "Cover Image", name: "cover", widget: "image", required: false }
       - { label: "Cover Image Position", name: "coverPosition", widget: "string", required: false, hint: "CSS object-position, e.g. 'center 20%'. Defaults to centered." }
       - { label: "Body", name: "body", widget: "markdown" }
