@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Media from './pages/Media'
 import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import Merch from './pages/Merch'
 import './styles/tokens.css'
 import './styles/layout.scss'
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/media" element={<Media />} />
         <Route path="/blog"  element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/merch" element={<Merch />} />
       </Routes>
       <Footer />
