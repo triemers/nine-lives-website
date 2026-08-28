@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { schedule } from '../../data/schedule'
 import '../../styles/schedule.scss'
 
@@ -33,9 +34,21 @@ function RaceRow({ race, past = false }) {
           <div className="schedule__links">
             {race.links.map((link) =>
               link.url ? (
-                <a key={link.label} href={link.url} className="btn btn--ghost btn--sm">
-                  {link.label} →
-                </a>
+                link.url.startsWith('http') ? (
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn--ghost btn--sm"
+                  >
+                    {link.label} →
+                  </a>
+                ) : (
+                  <Link key={link.label} to={link.url} className="btn btn--ghost btn--sm">
+                    {link.label} →
+                  </Link>
+                )
               ) : (
                 <span key={link.label} className="schedule__link--pending">
                   {link.label}

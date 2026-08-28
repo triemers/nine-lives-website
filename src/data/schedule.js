@@ -52,7 +52,7 @@ export const schedule = [
     discipline: 'Bikepacking',
     status:     'completed',
     url:        null,
-    links:      [{ label: 'Pack List', url: null }],
+    links:      [{ label: 'Pack List', url: '/blog/stagecoach-400-kit-list' }],
   },
   {
     id:         'midsouth-2026',
@@ -62,6 +62,6 @@ export const schedule = [
     discipline: 'Gravel',
     status:     'completed',
     url:        null,
-    links:      [{ label: 'Recap', url: null }],
+    links:      [{ label: 'Recap', url: '/blog/midsouth-2026' }],
   },
 ]

@@ -110,10 +110,12 @@
   }
 
   &__links .btn--ghost {
-    color: var(--color-pink);
+    color: var(--color-purple);
+    text-shadow: var(--glow-purple-sm);
 
     &:hover {
       color: var(--color-white);
+      text-shadow: none;
     }
   }
 
