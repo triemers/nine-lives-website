@@ -55,17 +55,18 @@
   }
 
   &__name {
-    font-family: var(--font-display);
-    font-size: clamp(1.25rem, 2vw, 1.75rem);
-    font-weight: var(--weight-black);
-    letter-spacing: var(--tracking-tight);
-    text-transform: uppercase;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: normal;
+    text-transform: none;
     color: var(--color-white);
-    line-height: 1;
+    line-height: 1.1;
 
     @media (max-width: 900px) {
       grid-column: 1 / -1;
-      font-size: 1.25rem;
+      font-size: 1.4rem;
     }
   }
 

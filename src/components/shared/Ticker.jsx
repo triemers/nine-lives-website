@@ -1,10 +1,12 @@
 import fishbone from '../../assets/decorative/fishbone.png'
 import '../../styles/ticker.scss'
 
-export default function Ticker({ items, inverted = false, speed = 22 }) {
+export default function Ticker({ items, inverted = false, speed = 22, variant = 'default' }) {
+  const isThin = variant === 'thin'
+
   return (
     <div
-      className={`ticker${inverted ? ' ticker--inverted' : ''}`}
+      className={`ticker${inverted ? ' ticker--inverted' : ''}${isThin ? ' ticker--thin' : ''}`}
       aria-hidden="true"
     >
       <div
@@ -27,7 +29,11 @@ export default function Ticker({ items, inverted = false, speed = 22 }) {
                   className={`ticker__logo${item.size ? ` ticker__logo--${item.size}` : ''}`}
                 />
               )}
-              <img src={fishbone} alt="" className="ticker__fishbone" />
+              {isThin ? (
+                <span className="ticker__slash" aria-hidden="true">//</span>
+              ) : (
+                <img src={fishbone} alt="" className="ticker__fishbone" />
+              )}
             </span>
           ))
         )}

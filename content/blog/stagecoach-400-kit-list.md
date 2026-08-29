@@ -7,7 +7,7 @@ tags:
 disciplines:
   - "Bikepacking"
 cover: /images/blog/IMG_7649-scaled.jpg
-coverPosition: "center 60%"
+coverPosition: "center 55%"
 ---
 
 The Stagecoach 400 is a 360+ mile bikepacking race in Southern California, starting out of the mountain town of Idyllwild, going through the hills and descending to the coast, through the city of San Diego, through the Anza-Borrego desert, and back up to Idyllwild. It’s got a lot of up and down, some real chunky singletrack, and lots and lots (and lots) of deep, terrible sand that will suck all of the life out of you into it’s gritty depths.  

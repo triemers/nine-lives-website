@@ -5,7 +5,6 @@ import '../../styles/nav.scss'
 const NAV_LINKS = [
   { to: '/',      label: 'Home' },
   { to: '/about', label: 'About' },
-  { to: '/media', label: 'Media' },
   { to: '/blog',  label: 'The Scratching Post' },
   { to: '/merch', label: 'Merch' },
 ]

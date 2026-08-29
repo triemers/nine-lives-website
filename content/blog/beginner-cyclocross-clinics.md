@@ -7,7 +7,7 @@ tags:
 disciplines:
   - "Cyclocross"
 cover: /images/blog/Nine_Lives_Cyclocross_-74-scaled.jpg
-coverPosition: "center 15%"
+coverPosition: "center 8%"
 ---
 
 Cyclocross is coming and to help onboard new riders to this fast and silly sport, Nine Lives has been putting on a series of free clinics for beginners! With not one, but two Singlespeed Cyclocross world champions on the team and one US National Champion, we like to think we know a thing or two about ‘cross racing.

@@ -7,7 +7,7 @@ tags:
 disciplines:
   - "Gravel"
 cover: /images/blog/11284D71-55AA-4BA6-89E4-274137FF77AF.jpg
-coverPosition: "center 25%"
+coverPosition: "center 20%"
 ---
 
 A Recap from the Pro Non-Binary winner Robin Cummings

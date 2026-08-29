@@ -25,7 +25,7 @@ export default function BlogPost() {
       <section className="blog-post section">
         <div className="container">
           <Link to="/blog" className="blog-post__back">&larr; The Scratching Post</Link>
-          <h1>{post.title}</h1>
+          <h1 className="blog-post__title">{post.title}</h1>
           <div className="blog-post__meta">
             <span>{new Date(post.date).toLocaleDateString()}</span>
             {post.author && <span> · {post.author}</span>}
@@ -33,10 +33,10 @@ export default function BlogPost() {
           {(post.tags || post.disciplines) && (
             <div className="blog-post__tags">
               {post.disciplines?.map(discipline => (
-                <span key={discipline} className="tag tag--green">{discipline}</span>
+                <span key={discipline} className="tag tag--filled tag--green">{discipline}</span>
               ))}
               {post.tags?.map(tag => (
-                <span key={tag} className="tag tag--purple">{tag}</span>
+                <span key={tag} className="tag tag--filled tag--purple">{tag}</span>
               ))}
             </div>
           )}

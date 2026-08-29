@@ -2,7 +2,7 @@
    NINE LIVES CYCLING COLLECTIVE — Design Tokens
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap');
 
 :root {
 
@@ -39,6 +39,16 @@
     #0C0C0C 100%
   );
 
+  /* Same hero palette, oriented for short/wide strips (e.g. the thin ticker)
+     where the radial version above collapses into a flat color split. No
+     black stop — this one stays fully saturated green-to-purple. */
+  --gradient-hero-linear: linear-gradient(
+    90deg,
+    #3DFF6B 0%,
+    #9B59B6 50%,
+    #CC33FF 100%
+  );
+
   /* ----------------------------------------------------------
      TYPOGRAPHY
   ---------------------------------------------------------- */
@@ -46,6 +56,7 @@
   --font-display: 'Barlow Condensed', Arial Narrow, sans-serif;
   --font-serif:   'Cormorant Garamond', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'Courier New', monospace;
 
   --text-display-2xl: clamp(5rem, 12vw, 10rem);
   --text-display-xl:  clamp(3.5rem, 8vw, 7rem);
@@ -157,7 +168,7 @@ h2, h3, h4, h5, h6 {
 }
 
 h2 {
-  font-size: var(--text-display-md);
+  font-size: clamp(2.5rem, 8vw, 6rem);
   font-weight: var(--weight-black);
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;
@@ -241,6 +252,44 @@ a {
   font-size: var(--text-base);
   line-height: 1.65;
   color: var(--color-gray-300);
+}
+
+/* Page header — big bold white title + a narrower subhead column below it.
+   For a page's own main heading, e.g. "The Scratching Post". */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.page-header__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 9vw, 10rem);
+  font-weight: var(--weight-black);
+  line-height: 0.9;
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.page-header__subhead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 66%;
+}
+
+.page-header__subhead p {
+  font-size: var(--text-lg);
+  color: var(--color-gray-300);
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .page-header__subhead {
+    max-width: 100%;
+  }
 }
 
 
@@ -622,6 +671,20 @@ a {
   color: var(--color-purple);
   border-color: var(--color-purple);
 }
+
+/* Filled — solid color chip, mono type. Combine with a color modifier,
+   e.g. class="tag tag--filled tag--green" */
+.tag--filled {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-normal);
+  border: none;
+  color: var(--color-black);
+}
+
+.tag--filled.tag--default { background-color: var(--color-gray-300); }
+.tag--filled.tag--green   { background-color: var(--color-green); }
+.tag--filled.tag--purple  { background-color: var(--color-purple); }
 
 .tag--neon {
   color: var(--color-green);
