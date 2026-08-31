@@ -18,7 +18,7 @@ export default function RiderCard({ rider }) {
         <p className="rider-card__bio">{rider.bio}</p>
         <div className="rider-card__tags">
           {rider.disciplines.map(d => (
-            <span key={d} className="tag tag--green">{d}</span>
+            <span key={d} className="tag tag--filled tag--green">{d}</span>
           ))}
         </div>
       </div>
