@@ -19,14 +19,12 @@ export default function About() {
                 <p>Not only do we strive to be fast, but we want to make the whole field faster! Join us for a clinic or ask us a question any time, we're happy to share our collective knowledge. Together we've won everything from 100 mile MTB races to Cyclocross national championships.</p>
               </div>
             </div>
-            <div className="about-story__photo-frame">
-              <div className="about-story__photo-wrap grain">
-                <img
-                  src={storyPhoto}
-                  alt="Nine Lives riders leading a gravel road climb together"
-                  className="about-story__photo"
-                />
-              </div>
+            <div className="about-story__photo-wrap">
+              <img
+                src={storyPhoto}
+                alt="Nine Lives riders leading a gravel road climb together"
+                className="about-story__photo"
+              />
             </div>
           </div>
         </div>
@@ -35,14 +33,12 @@ export default function About() {
       <section className="about-values section about-values--panel">
         <div className="container">
           <div className="about-values__inner">
-            <div className="about-values__photo-frame">
-              <div className="about-values__photo-wrap grain">
-                <img
-                  src={valuesPhoto}
-                  alt="Nine Lives riders piled onto a thrifted couch after a race"
-                  className="about-values__photo"
-                />
-              </div>
+            <div className="about-values__photo-wrap">
+              <img
+                src={valuesPhoto}
+                alt="Nine Lives riders piled onto a thrifted couch after a race"
+                className="about-values__photo"
+              />
             </div>
             <div className="about-values__content">
               <h2 className="about-sidebar-label">Inclusivity</h2>

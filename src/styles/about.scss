@@ -30,23 +30,12 @@
     }
   }
 
-  // Wrapper that applies the glow frame via drop-shadow (follows clip-path shape)
-  &__photo-frame {
-    filter:
-      drop-shadow(0 0 8px rgba(82, 255, 122, 0.5))
-      drop-shadow(0 0 2px rgba(82, 255, 122, 0.9));
-  }
-
-  // Photo container — clipped to a chamfered shape, scanlines + tint baked into ::before
+  // Photo container — clipped to a chamfered shape
   &__photo-wrap {
     position: relative;
     overflow: hidden;
     min-height: 420px;
     clip-path: polygon(0 0, 100% 0, 100% 90%, 88% 100%, 0 100%);
-
-    &::after {
-      opacity: 0.28;
-    }
 
     @media (max-width: 768px) {
       min-height: 320px;
@@ -68,17 +57,10 @@
   object-position: center 25%;
 }
 
-// Inclusivity is set apart from Our Story with a dark panel, mirrored layout,
-// and a pink glow (vs. Our Story's green) so the two sections read distinctly.
+// Inclusivity is set apart from Our Story with a dark panel and mirrored layout.
 .about-values {
   &--panel {
     background-color: var(--color-gray-900);
-  }
-
-  &__photo-frame {
-    filter:
-      drop-shadow(0 0 8px rgba(255, 45, 155, 0.5))
-      drop-shadow(0 0 2px rgba(255, 45, 155, 0.9));
   }
 
   &__photo-wrap {

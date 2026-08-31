@@ -17,7 +17,7 @@ export const schedule = [
   {
     id:         'pdx-trophy-cup-2026',
     name:       'PDX Trophy Cup Series',
-    date:       'Fall 2026, Dates TBD',
+    date:       'Sep 8–Oct 13, 2026',
     location:   'Portland, OR',
     discipline: 'Cyclocross',
     status:     'upcoming',
