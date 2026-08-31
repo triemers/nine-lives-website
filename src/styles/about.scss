@@ -66,88 +66,70 @@
   }
 }
 
+// Inclusivity runs as a bold, full-color panel flush against the hero above it.
 .about-values {
+  &--panel.section {
+    background: var(--gradient-hero);
+    padding-block: 0;
+  }
+
   &__inner {
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-16);
-    align-items: center;
+    grid-template-columns: 50% 50%;
+    align-items: stretch;
+    height: 25vh;
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
-      gap: var(--space-8);
+      gap: var(--space-6);
+      height: auto;
+      padding-inline: var(--space-6);
     }
   }
 
-  &__content {
+  &__title {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
+    align-items: center;
+    height: 100%;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: var(--weight-bold);
+    letter-spacing: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 25vh;
+    color: var(--color-white);
+    white-space: nowrap;
+    padding-left: 5%;
+
+    @media (max-width: 768px) {
+      height: auto;
+      font-size: clamp(4rem, 16vw, 8rem);
+      white-space: normal;
+      padding-left: 0;
+    }
   }
 
   &__text {
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    height: 100%;
+    width: 100%;
+    padding: var(--space-8) 8% var(--space-8) var(--space-6);
+    background-color: rgba(24, 48, 32, 0.6);
 
     p {
+      max-width: 75%;
       font-size: var(--text-lg);
-      color: var(--color-gray-300);
-      line-height: 1.65;
+      font-weight: var(--weight-medium);
+      color: var(--color-gray-100);
+      line-height: 1.6;
     }
   }
-
-  // Photo container — clipped to a chamfered shape
-  &__photo-wrap {
-    position: relative;
-    overflow: hidden;
-    min-height: 420px;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 88% 100%, 0 100%);
-
-    @media (max-width: 768px) {
-      min-height: 320px;
-      clip-path: polygon(0 0, 100% 0, 100% 94%, 94% 100%, 0 100%);
-    }
-  }
-
-  &__photo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(25%) contrast(1.08) brightness(0.72);
-  }
-}
-
-// Inclusivity is set apart from Our Story with a dark panel and mirrored layout.
-.about-values {
-  &--panel {
-    background-color: var(--color-gray-900);
-  }
-
-  &__photo-wrap {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 12% 100%, 0 88%);
-
-    @media (max-width: 768px) {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 6% 100%, 0 94%);
-    }
-  }
-
-  &__photo {
-    object-position: center 40%;
-  }
-}
-
-.about-sidebar-label {
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: normal;
-  text-transform: none;
-  line-height: 1.1;
-  color: var(--color-white);
 }
 
 .about-riders {
