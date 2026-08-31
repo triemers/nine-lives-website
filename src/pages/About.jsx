@@ -1,6 +1,6 @@
 import RiderCard from '../components/about/RiderCard'
 import { RIDERS } from '../data/riders'
-import storyPhoto from '../assets/images/nine-lives-btd-020.jpg'
+import storyPhoto from '../assets/images/midsouth-2.jpg'
 import valuesPhoto from '../assets/images/salsa-chaise.jpg'
 import '../styles/about.scss'
 
@@ -8,23 +8,19 @@ export default function About() {
   return (
     <main className="page">
 
-      <section className="about-story section">
-        <div className="container">
-          <div className="about-story__inner">
-            <div className="about-story__content">
-              <h2>Our Story</h2>
-              <div className="about-story__text">
-                <p>Our riders are highly engaged in the cycling community. They work hard and play even harder. We fight not just for podiums, but for representation in the field. It's more important than ever to champion diversity.</p>
-                <p>We know that we win races in training, not on race day. Rain or shine you can find us out on the trails and roads less traveled. The gnarliest rides often leave us with the best memories.</p>
-                <p>Not only do we strive to be fast, but we want to make the whole field faster! Join us for a clinic or ask us a question any time, we're happy to share our collective knowledge. Together we've won everything from 100 mile MTB races to Cyclocross national championships.</p>
-              </div>
-            </div>
-            <div className="about-story__photo-wrap">
-              <img
-                src={storyPhoto}
-                alt="Nine Lives riders leading a gravel road climb together"
-                className="about-story__photo"
-              />
+      <section className="about-hero">
+        <img
+          src={storyPhoto}
+          alt="A Nine Lives rider in team kit watching a racer roll through the MidSouth course"
+          className="about-hero__photo"
+        />
+        <div className="container about-hero__container">
+          <div className="about-hero__box">
+            <h1 className="about-hero__title">Our Story</h1>
+            <div className="about-hero__text">
+              <p>Our riders are highly engaged in the cycling community. They work hard and play even harder. We fight not just for podiums, but for representation in the field. It's more important than ever to champion diversity.</p>
+              <p>We know that we win races in training, not on race day. Rain or shine you can find us out on the trails and roads less traveled. The gnarliest rides often leave us with the best memories.</p>
+              <p>Not only do we strive to be fast, but we want to make the whole field faster! Join us for a clinic or ask us a question any time, we're happy to share our collective knowledge. Together we've won everything from 100 mile MTB races to Cyclocross national championships.</p>
             </div>
           </div>
         </div>
