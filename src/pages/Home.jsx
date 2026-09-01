@@ -14,7 +14,7 @@ const TICKER_ITEMS = [
   { logo: btdLogo,      name: 'Bike Tires Direct', size: 'lg' },
   'Femmes & Themmes',
   { logo: castelliLogo, name: 'Castelli' },
-  'Founded 2025',
+  'Since 2025',
   { logo: athleticLogo, name: 'The Athletic Community', crop: true },
 ]
 
