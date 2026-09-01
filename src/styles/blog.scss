@@ -224,10 +224,23 @@
     margin-top: var(--space-4);
   }
 
+  // Breaks out of the post's narrow 720px text column to a much larger,
+  // viewport-relative width, centered on the viewport regardless of the
+  // column's own width.
   &__cover {
-    width: 100%;
+    width: 75vw;
+    max-width: 75vw;
     margin-top: var(--space-8);
+    margin-left: calc(50% - 37.5vw);
+    margin-right: calc(50% - 37.5vw);
     filter: grayscale(25%) contrast(1.08) brightness(0.72);
+
+    @media (max-width: 860px) {
+      width: 100%;
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 
   &__body {
