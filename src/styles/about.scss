@@ -158,14 +158,14 @@
   &__box {
     max-width: 960px;
     margin-inline: auto;
-    text-align: center;
+    text-align: left;
     background-color: var(--color-black);
     border: var(--border-medium) var(--color-white);
     box-shadow: 8px 8px 0 var(--color-purple);
     padding: var(--space-12) var(--space-8);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-4);
 
     @media (max-width: 640px) {
