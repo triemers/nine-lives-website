@@ -1,3 +1,9 @@
+// Removes the footer's default top margin when it directly follows the
+// Inclusivity panel, so the panel runs flush into the footer.
+.page:has(> .about-values--panel:last-child) + .footer {
+  margin-top: 0;
+}
+
 .about-hero {
   position: relative;
   min-height: 680px;
