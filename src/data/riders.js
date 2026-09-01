@@ -1,4 +1,4 @@
-import chloePic from '../assets/images/chloe-roster.webp'
+import chloePic from '../assets/images/chloe-roster-2026.jpg'
 import cadePic   from '../assets/images/cade-roster.webp'
 import robinPic  from '../assets/images/robin-roster.webp'
 import toriPic   from '../assets/images/tori-roster-2.jpg'
@@ -9,7 +9,7 @@ export const RIDERS = [
     name: 'Chloe Spritz',
     pronouns: 'She/Her',
     photo: chloePic,
-    photoPosition: 'center 20%',
+    photoPosition: 'center 15%',
     bio: "Singlespeed Cyclocross world champion? Data driven tech dork? Goofy girl that trips a lot while walking? Yup, Chloë's the whole package. With 18 years of experience and a whole lot of time spent in the saddle she's a force to be reckoned with on a good day — on a bad day she's unbeatable. Her nutrition of choice is nerds gummy clusters. Her biggest weakness is dairy. She's currently on her last life and trying to make this one count.",
     disciplines: ['Cyclocross', 'XC MTB', 'Gravel'],
   },

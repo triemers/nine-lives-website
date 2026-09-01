@@ -1,7 +1,18 @@
 import RiderCard from '../components/about/RiderCard'
+import Ticker from '../components/shared/Ticker'
 import { RIDERS } from '../data/riders'
 import storyPhoto from '../assets/images/midsouth-2.jpg'
 import '../styles/about.scss'
+
+// Repeated 3x so one "copy" of the marquee track comfortably exceeds
+// viewport width — see the same fix/comment in Blog.jsx.
+const INCLUSIVITY_WORDS_ONCE = [
+  'All Bodies',
+  'All Backgrounds',
+  'All Walks of Life',
+  'Inclusive Racing Is the Future',
+]
+const INCLUSIVITY_WORDS = [...INCLUSIVITY_WORDS_ONCE, ...INCLUSIVITY_WORDS_ONCE, ...INCLUSIVITY_WORDS_ONCE]
 
 export default function About() {
   return (
@@ -36,10 +47,15 @@ export default function About() {
         </div>
       </section>
 
-      <section className="about-values section about-values--panel grain grain--heavy scanlines">
-        <div className="about-values__inner">
-          <h2 className="about-values__title">Inclusivity</h2>
-          <div className="about-values__text">
+      <section className="about-values about-values--panel grain grain--heavy scanlines">
+        <h2 className="about-values__title">Inclusivity</h2>
+
+        <div className="about-values__marquee">
+          <Ticker items={INCLUSIVITY_WORDS} speed={16} />
+        </div>
+
+        <div className="about-values__bottom">
+          <div className="about-values__box">
             <p>We believe competitive cycling is for everyone; all bodies, all backgrounds, all walks of life. It is our goal to foster an environment where all athletes can grow and succeed, and we take this mission beyond our own training to the events we attend and the sponsors we partner with.</p>
             <p>We believe inclusive racing is the future of cycling and the only way to grow and foster the sport. We are committed to showcasing athletes who have traditionally been dismissed by the mainstream cycling world.</p>
           </div>
