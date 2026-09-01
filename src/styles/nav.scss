@@ -33,6 +33,15 @@
     }
   }
 
+  &__logo-short {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    &__logo-full { display: none; }
+    &__logo-short { display: inline; }
+  }
+
   &__links {
     display: flex;
     align-items: center;

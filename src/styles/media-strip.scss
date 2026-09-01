@@ -10,17 +10,6 @@
     overflow: visible;
   }
 
-  // Mobile: only last photo, hide everything else
-  @media (max-width: 600px) {
-    &__row--1 {
-      display: none;
-    }
-
-    &__row--2 &__cell:first-child {
-      display: none;
-    }
-  }
-
   &__row {
     // Desktop: ghost box — children become direct flex children of .media-strip
     display: contents;
@@ -37,6 +26,19 @@
       &--2 {
         height: 67vw;
       }
+    }
+  }
+
+  // Mobile: only last photo, hide everything else. Declared after &__row
+  // above so display:none reliably wins the cascade (same specificity,
+  // later rule) over the &__row { display: flex } rule at 900px.
+  @media (max-width: 600px) {
+    &__row--1 {
+      display: none;
+    }
+
+    &__row--2 &__cell:first-child {
+      display: none;
     }
   }
 

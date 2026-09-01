@@ -19,10 +19,17 @@
     padding-bottom: var(--space-6);
 
     @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      gap: var(--space-10);
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "brand brand"
+        "pages follow";
+      gap: var(--space-8) var(--space-6);
     }
   }
+
+  &__brand  { @media (max-width: 768px) { grid-area: brand;  } }
+  &__nav    { @media (max-width: 768px) { grid-area: pages;  } }
+  &__social { @media (max-width: 768px) { grid-area: follow; } }
 
   &__brand-name {
     font-family: var(--font-display);

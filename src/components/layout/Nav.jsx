@@ -21,7 +21,8 @@ export default function Nav() {
       <div className="nav__inner">
 
         <NavLink to="/" className="nav__logo" onClick={closeMenu}>
-          Nine Lives Cycling Collective
+          <span className="nav__logo-full">Nine Lives Cycling Collective</span>
+          <span className="nav__logo-short">Nine Lives</span>
         </NavLink>
 
         <button

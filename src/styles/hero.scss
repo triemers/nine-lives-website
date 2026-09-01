@@ -1,6 +1,10 @@
 .hero {
   min-height: calc(100vh - 60px);
   background: var(--gradient-hero);
+
+  @media (max-width: 480px) {
+    min-height: 75vh;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;

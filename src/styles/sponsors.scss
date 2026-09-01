@@ -10,12 +10,16 @@
     align-items: stretch;
     flex-wrap: wrap;
     gap: var(--space-16);
-    height: 120px;
+
+    @media (max-width: 480px) {
+      gap: var(--space-8);
+    }
   }
 
   &__item {
     display: flex;
     align-items: center;
+    height: 120px;
     padding-block: 8px;
   }
 
@@ -26,6 +30,10 @@
     object-fit: contain;
     opacity: 0.8;
     transition: opacity var(--duration-base) var(--ease-out);
+
+    @media (max-width: 480px) {
+      max-width: 160px;
+    }
 
     &--invert {
       filter: brightness(0) invert(1);

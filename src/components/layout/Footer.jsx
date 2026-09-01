@@ -24,14 +24,14 @@ export default function Footer() {
 
         <div className="footer__inner">
 
-          <div>
+          <div className="footer__brand">
             <p className="footer__brand-name">Nine Lives</p>
             <p className="footer__brand-tagline">
               An elite women's and gender expansive cycling collective.
             </p>
           </div>
 
-          <nav aria-label="Footer navigation">
+          <nav className="footer__nav" aria-label="Footer navigation">
             <p className="footer__nav-label">Pages</p>
             <ul className="footer__nav-list">
               {NAV_LINKS.map(({ to, label }) => (
@@ -42,7 +42,7 @@ export default function Footer() {
             </ul>
           </nav>
 
-          <div>
+          <div className="footer__social">
             <p className="footer__social-label">Follow</p>
             <div className="footer__social-links">
               {SOCIAL_LINKS.map(({ href, label }) => (
