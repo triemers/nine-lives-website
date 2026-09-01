@@ -148,6 +148,54 @@
   50%       { text-shadow: 0 0 36px rgba(204, 51, 255, 0.7); }
 }
 
+.apply-module {
+  &__box {
+    max-width: 960px;
+    margin-inline: auto;
+    text-align: center;
+    background-color: var(--color-black);
+    border: var(--border-medium) var(--color-white);
+    box-shadow: 8px 8px 0 var(--color-purple);
+    padding: var(--space-12) var(--space-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+
+    @media (max-width: 640px) {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: var(--weight-black);
+    letter-spacing: var(--tracking-tight);
+    text-transform: uppercase;
+    line-height: 0.95;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    max-width: 480px;
+
+    p {
+      color: var(--color-gray-300);
+      font-size: var(--text-lg);
+      line-height: 1.6;
+    }
+  }
+
+  &__cta {
+    margin-top: var(--space-4);
+  }
+}
+
 .about-riders {
   padding-top: var(--space-24);
   overflow-x: hidden;
