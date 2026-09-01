@@ -10,7 +10,6 @@ const INCLUSIVITY_WORDS_ONCE = [
   'All Bodies',
   'All Backgrounds',
   'All Walks of Life',
-  'Inclusive Racing Is the Future',
 ]
 const INCLUSIVITY_WORDS = [...INCLUSIVITY_WORDS_ONCE, ...INCLUSIVITY_WORDS_ONCE, ...INCLUSIVITY_WORDS_ONCE]
 
@@ -51,7 +50,7 @@ export default function About() {
         <h2 className="about-values__title">Inclusivity</h2>
 
         <div className="about-values__marquee">
-          <Ticker items={INCLUSIVITY_WORDS} speed={16} />
+          <Ticker items={INCLUSIVITY_WORDS} speed={30} />
         </div>
 
         <div className="about-values__bottom">
