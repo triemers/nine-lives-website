@@ -2,7 +2,7 @@ backend:
   name: github
   repo: triemers/nine-lives-website
   branch: master
-  base_url: https://REPLACE_WITH_SITE_URL
+  base_url: https://ninelivescycling.com
   auth_endpoint: auth
 
 media_folder: "public/images/blog"
