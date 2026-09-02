@@ -254,6 +254,23 @@
       margin-bottom: var(--space-6);
     }
 
+    // Captions: a plain paragraph that immediately follows an image-only
+    // paragraph (marked wraps a standalone `![]()` line in its own <p>).
+    // Pulled tight to the image above, styled smaller/italic to read as
+    // a caption rather than body copy.
+    p:has(> img:only-child),
+    p:has(> a:only-child > img:only-child) {
+      margin-bottom: 0.5rem;
+    }
+
+    p:has(> img:only-child) + p,
+    p:has(> a:only-child > img:only-child) + p {
+      margin-top: 0;
+      font-style: italic;
+      font-size: var(--text-sm);
+      color: var(--color-gray-400);
+    }
+
     h2, h3 {
       color: var(--color-white);
       margin-top: var(--space-12);
@@ -262,7 +279,8 @@
 
     img {
       width: 100%;
-      margin-block: var(--space-6);
+      margin-top: var(--space-6);
+      margin-bottom: 0;
     }
   }
 }

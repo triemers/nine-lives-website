@@ -24,7 +24,7 @@ export default function Blog() {
     <main className="page">
       <section className="blog section">
         <div className="page-header__title-wrap">
-          <h1 className="page-header__title">The Scratching Post</h1>
+          <h1 className="page-header__title">The Scratching<br className="page-header__title-break" /> Post</h1>
         </div>
 
         <div className="container blog__header">

@@ -282,6 +282,27 @@ a {
   -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
 }
 
+/* Hidden by default so the title reads as one line on desktop; shown at
+   mobile widths to force "Post" onto its own line. */
+.page-header__title-break {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .page-header__title-break {
+    display: block;
+  }
+
+  .page-header__title {
+    font-size: 16cqw;
+    /* Fade stops pushed later than the single-line version above —
+       otherwise the second line ("Post") falls deep into the fade
+       band and reads almost black. */
+    mask-image: linear-gradient(to bottom, black 75%, transparent 98%);
+    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 98%);
+  }
+}
+
 .page-header__subhead {
   display: flex;
   flex-direction: column;
