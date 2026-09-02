@@ -1,0 +1,9 @@
+{
+  "name": "nine-lives-website",
+  "compatibility_date": "2025-01-01",
+  // Marks this as a Pages project deployed through the unified `wrangler
+  // deploy` command — Wrangler serves everything in this directory as
+  // static assets and auto-picks-up /functions for Pages Functions
+  // (the Decap CMS OAuth handshake), same as the classic Pages flow.
+  "pages_build_output_dir": "dist"
+}
