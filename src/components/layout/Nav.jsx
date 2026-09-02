@@ -6,7 +6,6 @@ const NAV_LINKS = [
   { to: '/',      label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/blog',  label: 'The Scratching Post' },
-  { to: '/merch', label: 'Merch' },
 ]
 
 export default function Nav() {
