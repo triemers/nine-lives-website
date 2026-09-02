@@ -255,22 +255,31 @@ a {
 }
 
 /* Page header — big bold white title + a narrower subhead column below it.
-   For a page's own main heading, e.g. "The Scratching Post". */
-.page-header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
+   For a page's own main heading, e.g. "The Scratching Post".
+
+   .page-header__title-wrap must stay a direct child of a full-width
+   ancestor (not nested inside .container) — its width:80vw + auto
+   margins center it against the true viewport, which only works
+   correctly when its own containing block already spans 100% width. */
+.page-header__title-wrap {
+  width: 80vw;
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+  container-type: inline-size;
 }
 
 .page-header__title {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 9vw, 10rem);
+  font-size: 12cqw;
   font-weight: var(--weight-black);
   line-height: 0.9;
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;
   color: var(--color-white);
   white-space: nowrap;
+  mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
 }
 
 .page-header__subhead {

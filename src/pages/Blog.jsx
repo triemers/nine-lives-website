@@ -23,13 +23,14 @@ export default function Blog() {
   return (
     <main className="page">
       <section className="blog section">
+        <div className="page-header__title-wrap">
+          <h1 className="page-header__title">The Scratching Post</h1>
+        </div>
+
         <div className="container blog__header">
-          <div className="page-header">
-            <h1 className="page-header__title">The Scratching Post</h1>
-            <div className="page-header__subhead">
-              <p>Here you’ll find tips, race reports, thoughts and reflections about cycling, training, and fun.</p>
-              <p>Anything you’d like to hear about specifically? DM us on instagram @ninelivescycling.</p>
-            </div>
+          <div className="page-header__subhead">
+            <p>Here you’ll find tips, race reports, thoughts and reflections about cycling, training, and fun.</p>
+            <p>Anything you’d like to hear about specifically? DM us on instagram @ninelivescycling.</p>
           </div>
         </div>
 
