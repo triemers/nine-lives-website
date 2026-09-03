@@ -21,7 +21,7 @@ export const sponsors = [
     id:         'castelli',
     name:       'Castelli',
     logo:       castelliLogo,
-    filterMode: 'invert',
+    filterMode: 'none',
     url:        'https://www.castelli-cycling.com',
   },
   {
@@ -30,12 +30,5 @@ export const sponsors = [
     logo:       athleticLogo,
     filterMode: 'invert',
     url:        'https://theathleticcommunity.com',
-  },
-  {
-    id:         'kuat',
-    name:       'Kuat Racks',
-    logo:       null,   // drop logo file in src/assets/sponsors/kuat.png and import above
-    filterMode: 'invert',
-    url:        'https://kuat.com',
   },
 ]

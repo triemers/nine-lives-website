@@ -217,6 +217,13 @@
       white-space: nowrap;
       mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
       -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
+
+      // Below this, the clamp's 5rem floor is wider than the screen and
+      // gets silently clipped by .about-riders' overflow-x:hidden. A pure
+      // vw size (no rem floor) scales down with the viewport instead.
+      @media (max-width: 640px) {
+        font-size: 14vw;
+      }
     }
   }
 
