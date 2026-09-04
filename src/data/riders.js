@@ -28,7 +28,7 @@ export const RIDERS = [
     pronouns: 'They/She',
     photo: robinPic,
     photoPosition: 'top center',
-    bio: "The proud holder of a downhill road KOM that now has a stop sign in it, 2022 Enby SSCXWC, and 2025 US Enby CX champion, Robin is a passionate advocate on behalf of their cats, who are better than any of your pets, your family's pets, the pets of anybody you've ever met, and perhaps even the reader themselves. When not busy with such advocacy, she loves any bike (that has a freehub, don't ask) and reading for grad school (do ask, but only with time available). At least three lives in, could be more!",
+    bio: "The proud holder of a downhill road KOM that now has a stop sign in it, 2022 Enby SSCXWC, and 2024 US Enby CX champion, Robin is a passionate advocate on behalf of their cats, who are better than any of your pets, your family's pets, the pets of anybody you've ever met, and perhaps even the reader themselves. When not busy with such advocacy, she loves any bike (that has a freehub, don't ask) and reading for grad school (do ask, but only with time available). At least three lives in, could be more!",
     disciplines: ['Gravel'],
   },
   {
