@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: triemers/nine-lives-website
-  branch: master
+  branch: dev
   base_url: https://ninelivescycling.com
   auth_endpoint: auth
 
