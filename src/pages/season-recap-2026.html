@@ -1,0 +1,202 @@
+<title>Nine Lives 2026 Season Recap</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Poppins:ital,wght@0,400;0,500;0,700;0,900;1,900&display=swap">
+<style>
+/* Layout: a Sunset podium cover with the season in four numbers, then a short bone-paper results sheet by discipline. */
+:root{
+  --magenta:#D33367; --magenta-ink:#B0244F; --coral:#E06C62; --apricot:#DF7A60; --lime:#A9CA54; --plum:#5E2A5B; --night:#2A1729; --bone:#FBF3EF; --ink:#1A1614;
+  --bg:#FBF3EF; --surface:#FFFFFF; --fg:#1A1614; --muted:#6B5560; --rule:#E7D6D4; --accent:#B0244F; --chip:#F4E4E2; --win:#4E7A12;
+  --f-display:"Gloock", Didot, "Bodoni 72", Georgia, serif;
+  --f-body:"Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sunset: radial-gradient(60% 80% at 15% 20%, #A9CA54cc 0%, transparent 55%),
+            radial-gradient(50% 70% at 85% 75%, #5E2A5Bdd 0%, transparent 60%),
+            radial-gradient(70% 90% at 70% 10%, #DF7A60 0%, transparent 60%),
+            linear-gradient(115deg, #D33367 0%, #E06C62 45%, #D33367 70%, #5E2A5B 100%);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#1E121D; --surface:#2A1729; --fg:#FBF3EF; --muted:#C9AEBB; --rule:#43283F; --accent:#F27A9E; --chip:#3A2137; --win:#A9CA54; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#1E121D; --surface:#2A1729; --fg:#FBF3EF; --muted:#C9AEBB; --rule:#43283F; --accent:#F27A9E; --chip:#3A2137; --win:#A9CA54; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--fg); font:400 16px/1.6 var(--f-body); -webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-display); font-weight:400; text-transform:uppercase; line-height:1.06; text-wrap:balance; margin:0}
+h2{font-size:clamp(1.8rem,4vw,2.5rem)}
+h3{font-size:1.2rem}
+p,ul,ol{margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--lime); outline-offset:2px}
+.wrap{max-width:1000px; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px))}
+.eyebrow{font:700 .72rem/1 var(--f-body); letter-spacing:.16em; text-transform:uppercase; color:var(--accent)}
+.num{font-family:var(--f-body); font-weight:900; font-style:italic; letter-spacing:-.03em; font-variant-numeric:tabular-nums; line-height:.95}
+.lede{font-size:1.1rem; max-width:62ch}
+.muted{color:var(--muted)}
+
+/* Cover */
+.cover{background:var(--sunset); color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+.cover .wrap{padding-block:40px 0; display:grid; gap:18px}
+.wordmark{width:min(280px,66%); aspect-ratio:10876/2381; background:#fff; -webkit-mask:url(assets/wordmark.svg) left center/contain no-repeat; mask:url(assets/wordmark.svg) left center/contain no-repeat}
+.cover .tag{justify-self:start; font:800 .74rem/1 var(--f-body); letter-spacing:.16em; text-transform:uppercase; padding:8px 12px; background:var(--ink); color:var(--bone); transform:rotate(-2deg); box-shadow:4px 4px 0 #5E2A5B}
+.cover h1{font-size:clamp(2.8rem,8vw,5.4rem); line-height:.96}
+.cover h1 em{font-style:normal; display:block}
+.cover .sub{max-width:56ch; font-size:1.06rem; text-shadow:0 1px 12px #5E2A5B66}
+.stats{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1.5px solid #ffffff88; margin-top:14px}
+.stat{padding:20px 14px 24px 0; display:grid; gap:6px; align-content:start}
+.stat + .stat{padding-left:18px; border-left:1.5px solid #ffffff55}
+.stat .num{font-size:clamp(2.2rem,5.4vw,3.4rem)}
+.stat span:last-child{font-size:.88rem}
+
+main.wrap{display:grid; gap:64px; padding-block:48px 64px}
+section{display:grid; gap:20px; min-width:0}
+.head{display:grid; gap:10px}
+
+/* Results */
+.disciplines{display:grid; gap:20px}
+.disc{display:grid; grid-template-columns:200px minmax(0,1fr); gap:24px; padding-top:18px; border-top:3px solid var(--magenta)}
+.disc.gravel{border-color:var(--apricot)} .disc.mtb{border-color:var(--lime)}
+.disc h3{font-size:1.5rem}
+.disc .note{font-size:.88rem; color:var(--muted); margin-top:6px}
+.results{list-style:none; padding:0; display:grid; gap:0}
+.results li{display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; align-items:baseline; padding:10px 0; border-bottom:1px solid var(--rule)}
+.results li:last-child{border-bottom:0}
+.place{font:900 italic 1.25rem/1 var(--f-body); min-width:3.2ch; color:var(--fg)}
+.place.first{color:var(--accent)}
+.results b{font-weight:700}
+.results .who{color:var(--muted); font-size:.92rem}
+
+.callout{background:var(--surface); border:1px solid var(--rule); border-left:4px solid var(--magenta); border-radius:6px; padding:18px 22px; display:grid; gap:6px}
+.callout q{font-family:var(--f-display); font-size:1.3rem; line-height:1.25; quotes:none}
+
+/* Reach */
+.reach{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px}
+.reach div{display:grid; gap:6px; padding-top:14px; border-top:2px solid var(--fg)}
+.reach .num{font-size:clamp(2rem,4.6vw,2.8rem); color:var(--accent)}
+.reach span:last-child{font-size:.9rem; color:var(--muted)}
+
+/* Thanks + next */
+.thanks{display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:32px; align-items:center}
+.kit{display:flex; gap:12px}
+.kit img{width:50%; height:auto; background:var(--bone); border:1px solid var(--rule); border-radius:6px}
+.next{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px}
+.next div{display:grid; gap:6px; align-content:start}
+.next .num{font-size:2.4rem; color:var(--fg)}
+.next p{font-size:.94rem}
+
+footer{background:var(--night); color:var(--bone); -webkit-print-color-adjust:exact; print-color-adjust:exact}
+footer .wrap{padding-block:30px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center}
+footer .seal{width:76px; aspect-ratio:2230/1894; background:var(--bone); -webkit-mask:url(assets/seal.svg) center/contain no-repeat; mask:url(assets/seal.svg) center/contain no-repeat}
+footer p{font-size:.88rem; color:#E7D6D4}
+
+@media (max-width:760px){
+  .stats,.reach{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:nth-child(3){padding-left:0; border-left:0}
+  .stat:nth-child(n+3){border-top:1.5px solid #ffffff55}
+  .disc{grid-template-columns:minmax(0,1fr); gap:8px}
+  .thanks,.next{grid-template-columns:minmax(0,1fr)}
+}
+@media print{ main.wrap{gap:32px; padding-block:24px} section{break-inside:avoid-page} }
+</style>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="wordmark" role="img" aria-label="Nine Lives"></div>
+    <span class="tag">2026 Season Recap</span>
+    <h1>Two world titles. <em>One very good year.</em></h1>
+    <p class="sub">Thank you for backing Nine Lives in 2026. Here's what our women and non-binary riders did with it, and where we're headed next.</p>
+    <div class="stats">
+      <div class="stat"><span class="num">2&times;</span><span>Singlespeed Cyclocross World Champions</span></div>
+      <div class="stat"><span class="num">2</span><span>Cyclocross Crusade series titles</span></div>
+      <div class="stat"><span class="num">100%</span><span>of non-binary races we entered as a team, won</span></div>
+      <div class="stat"><span class="num">17%</span><span>average Instagram engagement</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="head">
+      <span class="eyebrow">Results</span>
+      <h2>Fast across three disciplines</h2>
+    </div>
+    <div class="callout">
+      <q>Chlo&euml; Spritz won every cyclocross race she entered in 2026.</q>
+      <span class="muted">That includes a world title and the Cyclocross Crusade series in two categories.</span>
+    </div>
+    <div class="disciplines">
+      <div class="disc">
+        <div><h3>Cyclocross</h3></div>
+        <ul class="results">
+          <li><span class="place first">1st</span><span><b>Singlespeed Cyclocross World Championships</b>, Women <span class="who">&middot; Chlo&euml; Spritz</span></span></li>
+          <li><span class="place first">1st</span><span><b>Singlespeed Cyclocross World Championships</b>, Non-binary <span class="who">&middot; Robin Cummings</span></span></li>
+          <li><span class="place first">1st</span><span><b>Cyclocross Crusade series</b>, Women 1/2 <span class="who">&middot; Chlo&euml; Spritz</span></span></li>
+          <li><span class="place first">1st</span><span><b>Cyclocross Crusade series</b>, Singlespeed <span class="who">&middot; Chlo&euml; Spritz</span></span></li>
+        </ul>
+      </div>
+      <div class="disc gravel">
+        <div><h3>Gravel</h3></div>
+        <ul class="results">
+          <li><span class="place first">1st</span><span><b>MidSouth</b>, Pro Non-binary <span class="who">&middot; Robin Cummings</span></span></li>
+          <li><span class="place first">1st</span><span><b>FoCo Fondo</b>, Pro Non-binary <span class="who">&middot; Robin Cummings</span></span></li>
+          <li><span class="place first">1st</span><span><b>Cascadia Super Gravel</b> <span class="who">&middot; Robin Cummings</span></span></li>
+          <li><span class="place">8th</span><span><b>MidSouth</b>, Pro Non-binary <span class="who">&middot; Cade Spritz</span></span></li>
+          <li><span class="place">8th</span><span><b>FoCo Fondo</b>, Pro Women <span class="who">&middot; Chlo&euml; Spritz</span></span></li>
+          <li><span class="place">13th</span><span><b>FoCo Fondo</b>, Pro Women <span class="who">&middot; Tori Riemersma</span></span></li>
+          <li><span class="place">20th</span><span><b>MidSouth</b>, Pro Women <span class="who">&middot; Chlo&euml; Spritz</span></span></li>
+        </ul>
+      </div>
+      <div class="disc mtb">
+        <div><h3>Mountain bike</h3></div>
+        <ul class="results">
+          <li><span class="place first">1st</span><span><b>Ring of Fire</b> <span class="who">&middot; Chlo&euml; Spritz</span></span></li>
+          <li><span class="place">2nd</span><span><b>Stagecoach 400</b> <span class="who">&middot; Tori Riemersma</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <span class="eyebrow">Reach</span>
+      <h2>People actually look at what we post</h2>
+    </div>
+    <div class="reach">
+      <div><span class="num">70K</span><span>social impressions every month</span></div>
+      <div><span class="num">17%</span><span>average Instagram engagement</span></div>
+      <div><span class="num">66K</span><span>views on our top post</span></div>
+      <div><span class="num">100+</span><span>events raced and hosted as a team</span></div>
+    </div>
+    <p class="muted">Our audience is 50% women, with a median household income of $100K&ndash;150K.</p>
+  </section>
+
+  <section class="thanks">
+    <div class="head">
+      <span class="eyebrow">Thank you</span>
+      <h2>To all our partners</h2>
+      <p class="lede">Every one of these results was raced by four riders building something new for women and non-binary cyclists. Thank you to every partner who backed us in our first season, and here's a sneak peak at what's coming next: the SS27 sunset print.</p>
+    </div>
+    <div class="kit">
+      <img src="assets/kit-front.png" alt="SS27 jersey front with the sunset tie-dye print" width="482" height="630">
+      <img src="assets/kit-back.png" alt="SS27 jersey back with the Nine Lives wordmark and Cinder the cat" width="485" height="630">
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <span class="eyebrow">2027</span>
+      <h2>More riders, more races, more for you</h2>
+    </div>
+    <div class="next">
+      <div><span class="num">4 &rarr; 9</span><p>riders on the roster, with five new women and non-binary athletes to announce.</p></div>
+      <div><span class="num">Mar&ndash;Dec</span><p>MidSouth and Sea Otter in spring, FoCo Fondo and Gravel Worlds in summer, cyclocross through winter.</p></div>
+    </div>
+    <p class="lede">We'd love to keep racing with you. Let's find 20 minutes before your 2027 plans are set.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="seal" role="img" aria-label="Nine Lives Cycling Collective seal"></div>
+    <p>Nine Lives Cycling Collective &middot; ninelivescycling@gmail.com<br>ninelivescycling.com &middot; @Nine_Lives_Cycling &middot; The cat's name is Cinder.</p>
+  </div>
+</footer>
