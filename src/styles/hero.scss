@@ -1,5 +1,5 @@
 .hero {
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - var(--nav-height));
   background: var(--gradient-hero);
 
   @media (max-width: 480px) {

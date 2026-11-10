@@ -1,4 +1,3 @@
-import ApplyRibbon      from '../components/home/ApplyRibbon'
 import Hero             from '../components/home/Hero'
 import Ticker           from '../components/shared/Ticker'
 import MissionStatement from '../components/home/MissionStatement'
@@ -21,7 +20,6 @@ const TICKER_ITEMS = [
 export default function Home() {
   return (
     <main className="page">
-      <ApplyRibbon />
       <Hero />
       <Ticker items={TICKER_ITEMS} />
       <MissionStatement />
