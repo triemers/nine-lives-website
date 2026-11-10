@@ -40,4 +40,11 @@ export const RIDERS = [
     bio: "A reformed roadie and former messenger turned ultra-endurance goblin, Tori prefers her races to be 36+ hours with a healthy dose of hike-a-bike. She's now fully aboard the gravel hype train. After a decade of racing everything from stage races in New Mexico, to alleycats in DC, to bikepacking races in Kyrgyzstan, she's more at home on two wheels than on two feet. She's lost count of how many lives she has left and is sincerely hoping it doesn't become a problem.",
     disciplines: ['Bikepacking', 'Gravel', 'Cyclocross'],
   },
+  // Five riders joining for 2027, still to be announced. Cards without a
+  // photo show a "?" over the artwork and just the name.
+  { number: "05", name: "TBA" },
+  { number: "06", name: "TBA" },
+  { number: "07", name: "TBA" },
+  { number: "08", name: "TBA" },
+  { number: "09", name: "TBA" },
 ]

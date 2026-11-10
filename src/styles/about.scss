@@ -79,8 +79,17 @@
 .about-values {
   &--panel {
     position: relative;
-    background: var(--gradient-sunset);
+    // The artwork texture, with the sunset gradient as a fallback while it loads
+    background:
+      url('../assets/images/hero-abstract.webp') center 30% / cover no-repeat,
+      var(--gradient-sunset);
     padding-block: var(--space-16) var(--space-12);
+
+    @media (max-width: 768px) {
+      background-image:
+        url('../assets/images/hero-abstract-sm.webp'),
+        var(--gradient-sunset);
+    }
   }
 
   &__title {
@@ -130,6 +139,7 @@
     background-color: var(--color-bg);
     border: var(--border-medium) var(--color-fg);
     box-shadow: 8px 8px 0 var(--color-apricot);
+    border-radius: var(--radius);
     max-width: 560px;
     padding: var(--space-8);
     display: flex;
@@ -231,8 +241,14 @@
   // Adjust overlap by changing margin-top here
   &__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    // 5 cards on the top row (the current riders plus the first TBA), then
+    // 4 centered underneath: a 10-column grid where each card spans 2 and
+    // the 6th card starts one column in.
+    grid-template-columns: repeat(10, 1fr);
     gap: var(--space-6);
+
+    > * { grid-column: span 2; }
+    > :nth-child(6) { grid-column: 2 / span 2; }
     margin-inline: 2.5%;
     margin-top: -180px;
     position: relative;
@@ -241,6 +257,7 @@
 
     @media (max-width: 900px) {
       grid-template-columns: repeat(2, 1fr);
+      > *, > :nth-child(6) { grid-column: auto; }
       margin-top: -90px;
     }
 
@@ -255,4 +272,23 @@
     background-color: color-mix(in srgb, var(--color-surface) 72%, transparent);
     backdrop-filter: blur(6px);
   }
+
+  // "?" placeholder for riders still to be announced
+  .rider-card__photo--tba {
+    display: grid;
+    place-items: center;
+    background: url("../assets/images/hero-abstract-sm.webp") center / cover no-repeat, var(--gradient-sunset);
+    font-family: var(--font-display);
+    font-weight: var(--weight-black);
+    font-size: clamp(6rem, 12vw, 10rem);
+    line-height: 1;
+    color: var(--color-on-sunset);
+    text-shadow: 0 2px 24px rgba(55, 40, 105, 0.35);
+  }
+
+  // A different crop of the artwork on each placeholder
+  .rider-card:nth-child(6) .rider-card__photo--tba { background-position: 15% 85%, center; }
+  .rider-card:nth-child(7) .rider-card__photo--tba { background-position: 85% 20%, center; }
+  .rider-card:nth-child(8) .rider-card__photo--tba { background-position: 40% 100%, center; }
+  .rider-card:nth-child(9) .rider-card__photo--tba { background-position: 100% 60%, center; }
 }
