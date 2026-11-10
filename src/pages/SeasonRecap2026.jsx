@@ -1,6 +1,6 @@
 // Nine Lives 2026 Season Recap, as a React component.
 // Usage: <SeasonRecap2026 assetsPath="/recap/assets" />
-// assetsPath is the folder (served by your site) holding wordmark.svg, seal.svg, kit-front.png and kit-back.png.
+// assetsPath is the folder (served by your site) holding wordmark.svg, kit-front.png and kit-back.png.
 // Styles are scoped to .nl-recap, so the component won't restyle the rest of your site.
 
 const STATS = [
@@ -187,16 +187,6 @@ export default function SeasonRecap2026({ assetsPath = "assets" }) {
         </section>
       </main>
 
-      <footer>
-        <div className="wrap">
-          <div className="seal" role="img" aria-label="Nine Lives Cycling Collective seal" style={mask("seal.svg", "center")} />
-          <p>
-            Nine Lives Cycling Collective · ninelivescycling@gmail.com
-            <br />
-            ninelivescycling.com · @Nine_Lives_Cycling · The cat's name is Cinder.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }
@@ -277,10 +267,6 @@ const CSS = `
 .nl-recap .next .num{font-size:2.4rem; color:var(--fg)}
 .nl-recap .next p{font-size:.94rem}
 
-.nl-recap footer{background:var(--night); color:var(--bone); -webkit-print-color-adjust:exact; print-color-adjust:exact}
-.nl-recap footer .wrap{padding-block:30px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center}
-.nl-recap footer .seal{width:76px; aspect-ratio:2230/1894; background:var(--bone)}
-.nl-recap footer p{font-size:.88rem; color:#E7D6D4}
 
 @media (max-width:760px){
   .nl-recap .stats,.nl-recap .reach{grid-template-columns:repeat(2,minmax(0,1fr))}
