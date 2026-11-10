@@ -5,17 +5,17 @@
   flex-wrap: wrap;
   gap: var(--space-2) var(--space-6);
   padding: var(--space-3) var(--space-6);
-  background-color: var(--color-green);
+  background-color: var(--color-lime);
   text-decoration: none;
   transition: background-color var(--duration-base) var(--ease-out),
     color var(--duration-base) var(--ease-out);
 
   &:hover {
-    background-color: var(--color-black);
+    background-color: var(--color-bg);
 
     .apply-ribbon__text,
     .apply-ribbon__cta {
-      color: var(--color-green);
+      color: var(--color-accent);
     }
   }
 }
@@ -26,7 +26,7 @@
   font-weight: var(--weight-black);
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-ink);
   transition: color var(--duration-base) var(--ease-out);
 }
 
@@ -36,7 +36,7 @@
   font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-ink);
   border-bottom: 1px solid currentColor;
   transition: color var(--duration-base) var(--ease-out);
 }

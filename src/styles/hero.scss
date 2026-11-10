@@ -1,6 +1,6 @@
 .hero {
   min-height: calc(100vh - var(--nav-height));
-  background: var(--gradient-hero);
+  background: var(--gradient-sunset); // shows while the image loads
 
   @media (max-width: 480px) {
     min-height: 75vh;
@@ -14,7 +14,43 @@
   gap: var(--space-8);
   padding: var(--space-16) var(--space-8);
 
+  // Abstract kit-print artwork, drifting slowly. Oversized so the drift
+  // never shows an edge.
+  &__bg {
+    position: absolute;
+    inset: -8%;
+    z-index: 0;
+    background: url('../assets/images/hero-abstract.webp') center / cover no-repeat;
+    animation: hero-drift 45s ease-in-out infinite alternate;
+    will-change: transform;
+
+    @media (max-width: 768px) {
+      background-image: url('../assets/images/hero-abstract-sm.webp');
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+
+    // Second layer: the same artwork turned 180° so its shapes don't line
+    // up with the base, drifting the other way on a different timing and
+    // fading in and out. As the two slide past each other the colors
+    // appear to flow. Opacity tops out at 35%; above that it reads as a
+    // double exposure.
+    &--flow {
+      transform: rotate(180deg) scale(1.12);
+      opacity: 0.15;
+      animation: hero-flow 32s ease-in-out infinite alternate;
+
+      @media (prefers-reduced-motion: reduce) {
+        display: none;
+      }
+    }
+  }
+
   &__logo-wrap {
+    position: relative;
+    z-index: 1; // above the background artwork
     perspective: 700px;
     flex-shrink: 0;
   }
@@ -58,4 +94,16 @@
 @keyframes scroll-fade {
   0%, 100% { opacity: 0.3; transform: scaleY(1); }
   50%       { opacity: 1;   transform: scaleY(1.1); }
+}
+
+@keyframes hero-drift {
+  0%   { transform: scale(1)    rotate(0deg)    translate(0, 0); }
+  50%  { transform: scale(1.06) rotate(1.5deg)  translate(-2%, 1.5%); }
+  100% { transform: scale(1.1)  rotate(-1deg)   translate(2%, -2%); }
+}
+
+@keyframes hero-flow {
+  0%   { transform: rotate(180deg) scale(1.12) translate(0, 0);       opacity: 0.15; }
+  50%  { transform: rotate(183deg) scale(1.18) translate(3%, -2%);    opacity: 0.35; }
+  100% { transform: rotate(177deg) scale(1.14) translate(-3%, 2.5%);  opacity: 0.25; }
 }

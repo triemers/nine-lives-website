@@ -10,25 +10,25 @@
 .ticker {
   display: flex;
   overflow: hidden;
-  background-color: var(--color-black);
-  border-top: 1px solid var(--color-gray-700);
-  border-bottom: 1px solid var(--color-gray-700);
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
   padding-block: var(--space-3);
 
   &--inverted {
-    background-color: var(--color-white);
+    background-color: var(--color-fg);
 
-    .ticker__item     { color: var(--color-black); }
-    .ticker__logo     { filter: brightness(0); }
-    .ticker__fishbone { filter: brightness(0); }
+    .ticker__item     { color: var(--color-bg); }
+    .ticker__logo     { filter: var(--logo-filter-inverse); }
+    .ticker__fishbone { filter: var(--logo-filter-inverse); }
   }
 
   // Thin — compact mono strip for a secondary ticker between sections,
   // as opposed to the big display-type ticker above.
   &--thin {
-    background: var(--gradient-hero-linear);
+    background: var(--gradient-sunset-linear);
     padding-block: var(--space-2);
-    border-color: var(--color-gray-900);
+    border-color: var(--color-rule);
 
     .ticker__item-wrap {
       gap: var(--space-3);
@@ -41,12 +41,12 @@
       font-weight: var(--weight-bold);
       letter-spacing: var(--tracking-wide);
       text-transform: uppercase;
-      color: var(--color-white);
+      color: var(--color-on-sunset);
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
     }
 
     .ticker__slash {
-      color: rgba(244, 244, 240, 0.6);
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 }
@@ -54,7 +54,7 @@
 .ticker__slash {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-gray-500);
+  color: var(--color-muted);
   flex-shrink: 0;
 }
 
@@ -85,7 +85,7 @@
   font-weight: var(--weight-black);
   text-transform: uppercase;
   letter-spacing: var(--tracking-tight);
-  color: var(--color-white);
+  color: var(--color-fg);
   flex-shrink: 0;
 }
 
@@ -93,7 +93,7 @@
   height: 42px;
   width: auto;
   opacity: 0.8;
-  filter: brightness(0) invert(1);
+  filter: var(--logo-filter);
 
   &--lg { height: 56px; }
 }
@@ -114,5 +114,5 @@
   width: auto;
   opacity: 0.45;
   flex-shrink: 0;
-  filter: invert(1);
+  filter: var(--logo-filter);
 }

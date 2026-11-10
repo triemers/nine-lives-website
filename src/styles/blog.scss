@@ -31,7 +31,7 @@
   &__photo-wrap {
     position: relative;
     aspect-ratio: 4 / 3;
-    background-color: var(--color-gray-900);
+    background-color: var(--color-surface);
   }
 
   &__photo-highlight {
@@ -40,9 +40,9 @@
     transform: translate(8px, 8px);
     z-index: -1;
 
-    &--green  { background-color: var(--color-green); }
-    &--purple { background-color: var(--color-purple); }
-    &--pink   { background-color: var(--color-pink); }
+    &--green  { background-color: var(--color-lime); }
+    &--purple { background-color: var(--color-magenta); }
+    &--pink   { background-color: var(--color-apricot); }
   }
 
   &__photo {
@@ -71,7 +71,7 @@
 
   &__date {
     font-size: var(--text-xs);
-    color: var(--color-gray-400);
+    color: var(--color-muted);
     letter-spacing: var(--tracking-widest);
     text-transform: uppercase;
   }
@@ -84,21 +84,21 @@
     letter-spacing: normal;
     line-height: 1.05;
     font-size: clamp(1.5rem, 2.6vw, 2rem);
-    color: var(--color-white);
+    color: var(--color-fg);
     transition: color var(--duration-base) var(--ease-out);
   }
 
   &:hover &__title {
-    color: var(--color-green);
+    color: var(--color-accent);
   }
 
   &__author {
     font-size: var(--text-sm);
-    color: var(--color-gray-300);
+    color: var(--color-muted);
   }
 
   &__excerpt {
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     line-height: 1.6;
   }
 
@@ -128,7 +128,7 @@
 }
 
 .blog-subscribe {
-  background-color: var(--color-gray-900);
+  background-color: var(--color-surface);
 
   &__heading {
     width: 100%;
@@ -148,7 +148,7 @@
     text-align: center;
 
     p {
-      color: var(--color-gray-300);
+      color: var(--color-muted);
       font-size: var(--text-lg);
       line-height: 1.65;
     }
@@ -168,18 +168,18 @@
       flex: 1;
       font-family: var(--font-body);
       font-size: var(--text-sm);
-      color: var(--color-white);
+      color: var(--color-fg);
       background-color: transparent;
-      border: var(--border-medium) var(--color-gray-500);
+      border: var(--border-medium) var(--color-muted);
       border-radius: var(--radius-none);
       padding: var(--space-3) var(--space-6);
 
       &::placeholder {
-        color: var(--color-gray-500);
+        color: var(--color-muted);
       }
 
       &:focus-visible {
-        border-color: var(--color-white);
+        border-color: var(--color-fg);
       }
     }
   }
@@ -192,12 +192,12 @@
 
   &__back {
     display: inline-block;
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     text-decoration: none;
     margin-bottom: var(--space-8);
 
     &:hover {
-      color: var(--color-white);
+      color: var(--color-fg);
     }
   }
 
@@ -209,11 +209,11 @@
     letter-spacing: normal;
     line-height: 1;
     font-size: clamp(2.5rem, 5vw, 4rem);
-    color: var(--color-white);
+    color: var(--color-fg);
   }
 
   &__meta {
-    color: var(--color-gray-400);
+    color: var(--color-muted);
     font-size: var(--text-sm);
     margin-top: var(--space-2);
   }
@@ -246,7 +246,7 @@
 
   &__body {
     margin-top: var(--space-8);
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     font-size: var(--text-lg);
     line-height: 1.65;
 
@@ -268,11 +268,11 @@
       margin-top: 0;
       font-style: italic;
       font-size: var(--text-sm);
-      color: var(--color-gray-400);
+      color: var(--color-muted);
     }
 
     h2, h3 {
-      color: var(--color-white);
+      color: var(--color-fg);
       margin-top: var(--space-12);
       margin-bottom: var(--space-4);
     }
