@@ -8,7 +8,7 @@ export default function MissionStatement() {
       <div className="container mission__inner">
 
         <div className="mission__photo-frame">
-          <div className="mission__photo-wrap grain grain--heavy">
+          <div className="mission__photo-wrap grain">
             <img
               src={photo}
               alt="Nine Lives riders at MidSouth Nonbinary Pro Race"

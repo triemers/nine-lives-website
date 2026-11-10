@@ -1,12 +1,12 @@
 import fishbone from '../../assets/decorative/fishbone.png'
 import '../../styles/ticker.scss'
 
-export default function Ticker({ items, inverted = false, speed = 22, variant = 'default' }) {
+export default function Ticker({ items, speed = 22, variant = 'default' }) {
   const isThin = variant === 'thin'
 
   return (
     <div
-      className={`ticker${inverted ? ' ticker--inverted' : ''}${isThin ? ' ticker--thin' : ''}`}
+      className={`ticker${isThin ? ' ticker--thin' : ''}`}
       aria-hidden="true"
     >
       <div

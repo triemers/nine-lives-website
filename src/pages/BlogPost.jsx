@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, Navigate } from 'react-router-dom'
 import { marked } from 'marked'
 import { POSTS } from '../data/blog'
 import '../styles/blog.scss'
@@ -6,6 +6,9 @@ import '../styles/blog.scss'
 export default function BlogPost() {
   const { slug } = useParams()
   const post = POSTS.find(p => p.slug === slug)
+
+  // Page posts have their own route
+  if (post?.href) return <Navigate to={post.href} replace />
 
   if (!post) {
     return (
@@ -27,16 +30,16 @@ export default function BlogPost() {
           <Link to="/blog" className="blog-post__back">&larr; The Scratching Post</Link>
           <h1 className="blog-post__title">{post.title}</h1>
           <div className="blog-post__meta">
-            <span>{new Date(post.date).toLocaleDateString()}</span>
+            <span>{new Date(post.date).toLocaleDateString(undefined, { timeZone: 'UTC' })}</span>
             {post.author && <span> · {post.author}</span>}
           </div>
           {(post.tags || post.disciplines) && (
             <div className="blog-post__tags">
               {post.disciplines?.map(discipline => (
-                <span key={discipline} className="tag tag--filled tag--green">{discipline}</span>
+                <span key={discipline} className="tag tag--lime">{discipline}</span>
               ))}
               {post.tags?.map(tag => (
-                <span key={tag} className="tag tag--filled tag--purple">{tag}</span>
+                <span key={tag} className="tag tag--magenta">{tag}</span>
               ))}
             </div>
           )}

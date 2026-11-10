@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 .blog {
   padding-block: var(--space-24);
 
@@ -6,21 +8,35 @@
     overflow-x: hidden;
   }
 
+  // 6-column grid: the first two posts split 4/2 (66/33), every post after
+  // that spans 3 (50/50). The top row's photos share one height so they line up.
   &__list {
+    --top-photo-height: clamp(260px, 30vw, 460px);
+
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: var(--space-12);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--space-16) var(--space-12);
     margin-top: var(--space-16);
 
-    @media (max-width: 860px) {
-      grid-template-columns: 1fr;
-    }
-  }
+    > * { grid-column: span 3; }
+    > :first-child { grid-column: span 4; }
+    > :nth-child(2) { grid-column: span 2; }
 
-  &__minor-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-12);
+    > :nth-child(-n + 2) .blog-card__photo-wrap {
+      aspect-ratio: auto;
+      height: var(--top-photo-height);
+    }
+
+    @media (max-width: 860px) {
+      grid-template-columns: minmax(0, 1fr);
+
+      > *, > :first-child, > :nth-child(2) { grid-column: auto; }
+
+      > :nth-child(-n + 2) .blog-card__photo-wrap {
+        aspect-ratio: 4 / 3;
+        height: auto;
+      }
+    }
   }
 }
 
@@ -31,7 +47,7 @@
   &__photo-wrap {
     position: relative;
     aspect-ratio: 4 / 3;
-    background-color: var(--color-gray-900);
+    background-color: var(--color-surface);
   }
 
   &__photo-highlight {
@@ -40,9 +56,9 @@
     transform: translate(8px, 8px);
     z-index: -1;
 
-    &--green  { background-color: var(--color-green); }
-    &--purple { background-color: var(--color-purple); }
-    &--pink   { background-color: var(--color-pink); }
+    &--lime    { background-color: var(--color-lime); }
+    &--magenta { background-color: var(--color-magenta); }
+    &--apricot { background-color: var(--color-apricot); }
   }
 
   &__photo {
@@ -71,7 +87,7 @@
 
   &__date {
     font-size: var(--text-xs);
-    color: var(--color-gray-400);
+    color: var(--color-muted);
     letter-spacing: var(--tracking-widest);
     text-transform: uppercase;
   }
@@ -84,21 +100,21 @@
     letter-spacing: normal;
     line-height: 1.05;
     font-size: clamp(1.5rem, 2.6vw, 2rem);
-    color: var(--color-white);
+    color: var(--color-fg);
     transition: color var(--duration-base) var(--ease-out);
   }
 
   &:hover &__title {
-    color: var(--color-green);
+    color: var(--color-accent);
   }
 
   &__author {
     font-size: var(--text-sm);
-    color: var(--color-gray-300);
+    color: var(--color-muted);
   }
 
   &__excerpt {
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     line-height: 1.6;
   }
 
@@ -112,9 +128,9 @@
   }
 }
 
-// Minor (non-featured) cards keep their excerpt to a tight two lines so the
-// stacked list stays scannable next to the larger featured card.
-.blog__minor-list .blog-card__excerpt {
+// Smaller cards keep their excerpt to a tight two lines so the list stays
+// scannable next to the larger featured card.
+.blog-card:not(.blog-card--featured) .blog-card__excerpt {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -127,8 +143,10 @@
   margin-top: 0;
 }
 
+// On the artwork in both themes, with white type
 .blog-subscribe {
-  background-color: var(--color-gray-900);
+  @include artwork(center 60%);
+  @include on-artwork;
 
   &__heading {
     width: 100%;
@@ -148,7 +166,7 @@
     text-align: center;
 
     p {
-      color: var(--color-gray-300);
+      color: var(--color-muted);
       font-size: var(--text-lg);
       line-height: 1.65;
     }
@@ -168,18 +186,18 @@
       flex: 1;
       font-family: var(--font-body);
       font-size: var(--text-sm);
-      color: var(--color-white);
+      color: var(--color-fg);
       background-color: transparent;
-      border: var(--border-medium) var(--color-gray-500);
-      border-radius: var(--radius-none);
+      border: var(--border-medium) var(--color-muted);
+      border-radius: var(--radius);
       padding: var(--space-3) var(--space-6);
 
       &::placeholder {
-        color: var(--color-gray-500);
+        color: var(--color-muted);
       }
 
       &:focus-visible {
-        border-color: var(--color-white);
+        border-color: var(--color-fg);
       }
     }
   }
@@ -192,12 +210,12 @@
 
   &__back {
     display: inline-block;
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     text-decoration: none;
     margin-bottom: var(--space-8);
 
     &:hover {
-      color: var(--color-white);
+      color: var(--color-fg);
     }
   }
 
@@ -209,11 +227,11 @@
     letter-spacing: normal;
     line-height: 1;
     font-size: clamp(2.5rem, 5vw, 4rem);
-    color: var(--color-white);
+    color: var(--color-fg);
   }
 
   &__meta {
-    color: var(--color-gray-400);
+    color: var(--color-muted);
     font-size: var(--text-sm);
     margin-top: var(--space-2);
   }
@@ -246,7 +264,7 @@
 
   &__body {
     margin-top: var(--space-8);
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     font-size: var(--text-lg);
     line-height: 1.65;
 
@@ -268,11 +286,11 @@
       margin-top: 0;
       font-style: italic;
       font-size: var(--text-sm);
-      color: var(--color-gray-400);
+      color: var(--color-muted);
     }
 
     h2, h3 {
-      color: var(--color-white);
+      color: var(--color-fg);
       margin-top: var(--space-12);
       margin-bottom: var(--space-4);
     }

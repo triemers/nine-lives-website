@@ -41,12 +41,12 @@ export default function About() {
         </div>
         <div className="about-riders__grid">
           {RIDERS.map(rider => (
-            <RiderCard key={rider.name} rider={rider} />
+            <RiderCard key={rider.number} rider={rider} />
           ))}
         </div>
       </section>
 
-      <section className="about-values about-values--panel grain grain--heavy scanlines">
+      <section className="about-values about-values--panel">
         <h2 className="about-values__title">Inclusivity</h2>
 
         <div className="about-values__marquee">

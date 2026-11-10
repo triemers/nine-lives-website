@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 
-export default function BlogCard({ post, featured = false, accent = 'green' }) {
+export default function BlogCard({ post, featured = false, accent = 'lime' }) {
+  // Page posts (like the season recap) link to their own route
+  const to = post.href ?? `/blog/${post.slug}`
+
   return (
     <article className={`blog-card${featured ? ' blog-card--featured' : ''}`}>
       <div className="blog-card__photo-wrap">
@@ -17,21 +20,21 @@ export default function BlogCard({ post, featured = false, accent = 'green' }) {
       <div className="blog-card__body">
         <div className="blog-card__meta">
           <span className="blog-card__date">
-            {new Date(post.date).toLocaleDateString()}
+            {new Date(post.date).toLocaleDateString(undefined, { timeZone: 'UTC' })}
           </span>
           {post.disciplines?.map(discipline => (
-            <span key={discipline} className="tag tag--filled tag--green">{discipline}</span>
+            <span key={discipline} className="tag tag--lime">{discipline}</span>
           ))}
           {post.tags?.map(tag => (
-            <span key={tag} className="tag tag--filled tag--purple">{tag}</span>
+            <span key={tag} className="tag tag--magenta">{tag}</span>
           ))}
         </div>
         <h2 className="blog-card__title">
-          <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+          <Link to={to}>{post.title}</Link>
         </h2>
         {post.author && <span className="blog-card__author">By {post.author}</span>}
         {post.excerpt && <p className="blog-card__excerpt">{post.excerpt}</p>}
-        <Link to={`/blog/${post.slug}`} className="btn btn--secondary blog-card__cta">
+        <Link to={to} className="btn btn--secondary blog-card__cta">
           Read More
         </Link>
       </div>

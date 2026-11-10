@@ -1,7 +1,7 @@
 // 2026 Season Recap — src/pages/SeasonRecap2026.jsx
-// A light "bone paper" page, unlike the rest of the site, with two animated
-// sunset bands (the cover and the reach section). Everything is scoped to
-// .nl-recap so none of it leaks into other pages.
+// A long-form page on the site's tokens, with two animated sunset bands (the
+// cover and the reach section). Scoped to .nl-recap so none of it leaks into
+// other pages.
 
 @use "sass:list";
 
@@ -27,8 +27,8 @@
   100% { --lr: 1.45; --lo: 95%; --lx: 7%;  --ly: 9%; }
 }
 
-// Plum wanders across the band
-@keyframes nl-plum {
+// Violet wanders across the band
+@keyframes nl-violet {
   0%, 100% { --px: 0%;   --py: 0%; }
   25%      { --px: -16%; --py: -12%; }
   50%      { --px: -26%; --py: 6%; }
@@ -41,11 +41,11 @@
   100% { --ax: 12%;  --ay: 14%;  --ao: 100%; }
 }
 
-// $lime, $plum, $apricot: where each glow sits at rest (x y).
-// $angle: direction of the magenta-to-plum sweep underneath.
+// $lime, $violet, $apricot: where each glow sits at rest (x y).
+// $angle: direction of the magenta-to-violet sweep underneath.
 // $dir: 1 moves the glows with the animation, -1 mirrors the motion.
 // $animation: durations and delays, so the two bands never move in sync.
-@mixin sunset($lime, $plum, $apricot, $angle, $dir, $animation) {
+@mixin sunset($lime, $violet, $apricot, $angle, $dir, $animation) {
   // Fallback values. Without them, a browser that can't register the
   // properties above would drop the whole background.
   --lx: 0%; --ly: 0%; --lr: 1; --lo: 80%;
@@ -56,21 +56,21 @@
     radial-gradient(
       calc(60% * var(--lr)) calc(80% * var(--lr))
       at calc(#{list.nth($lime, 1)} + #{$dir} * var(--lx)) calc(#{list.nth($lime, 2)} + #{$dir} * var(--ly)),
-      color-mix(in srgb, var(--lime) var(--lo), transparent) 0%, transparent 55%
+      color-mix(in srgb, var(--color-lime) var(--lo), transparent) 0%, transparent 55%
     ),
     radial-gradient(
       50% 70%
-      at calc(#{list.nth($plum, 1)} + #{$dir} * var(--px)) calc(#{list.nth($plum, 2)} + #{$dir} * var(--py)),
-      color-mix(in srgb, var(--plum) 87%, transparent) 0%, transparent 60%
+      at calc(#{list.nth($violet, 1)} + #{$dir} * var(--px)) calc(#{list.nth($violet, 2)} + #{$dir} * var(--py)),
+      color-mix(in srgb, var(--color-violet) 87%, transparent) 0%, transparent 60%
     ),
     radial-gradient(
       70% 90%
       at calc(#{list.nth($apricot, 1)} + #{$dir} * var(--ax)) calc(#{list.nth($apricot, 2)} + #{$dir} * var(--ay)),
-      color-mix(in srgb, var(--apricot) var(--ao), transparent) 0%, transparent 60%
+      color-mix(in srgb, var(--color-apricot) var(--ao), transparent) 0%, transparent 60%
     ),
-    linear-gradient($angle, var(--magenta) 0%, var(--coral) 45%, var(--magenta) 70%, var(--plum) 100%);
+    linear-gradient($angle, var(--color-magenta) 0%, var(--color-coral) 45%, var(--color-magenta) 70%, var(--color-violet) 100%);
   animation: $animation;
-  color: #fff;
+  color: var(--color-on-sunset);
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 
@@ -83,40 +83,14 @@
 // ------------------------------------------------------------
 
 .nl-recap {
-  --magenta: #D33367;
-  --coral:   #E06C62;
-  --apricot: #DF7A60;
-  --lime:    #A9CA54;
-  --plum:    #5E2A5B;
-  --bone:    #FBF3EF;
+  --line-soft: color-mix(in srgb, var(--color-on-sunset) 33%, transparent); // dividers on the sunset bands
 
-  --bg:     var(--bone);
-  --fg:     #1A1614;
-  --muted:  #6B5560;
-  --rule:   #E7D6D4;
-  --accent: #B0244F;
-
-  --line-soft:   rgba(255, 255, 255, .33); // dividers on the sunset bands
-  --text-glow:   0 1px 12px color-mix(in srgb, var(--plum) 40%, transparent);
-
-  --wrap: 900px;
-
-  background: var(--bg);
-  color: var(--fg);
+  background: var(--color-bg);
+  color: var(--color-fg);
   overflow-x: clip; // the full-width reach band would otherwise cause sideways scroll
   font-family: var(--font-body);
   font-size: var(--text-lg);
   line-height: 1.65;
-
-  // Follows the visitor's device setting
-  @media (prefers-color-scheme: dark) {
-    --bg:     #1E121D;
-    --fg:     #FBF3EF;
-    --muted:  #C9AEBB;
-    --rule:   #43283F;
-    --accent: #F27A9E;
-    color-scheme: dark;
-  }
 
   h1, h2, h3 {
     margin: 0;
@@ -131,15 +105,10 @@
   h2 { font-size: var(--text-display-lg); }
   h3 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
   p  { margin: 0; }
-  a  { color: var(--accent); }
-
-  :focus-visible {
-    outline: 3px solid var(--lime);
-    outline-offset: 2px;
-  }
+  a  { color: var(--color-accent); }
 
   .wrap {
-    max-width: var(--wrap);
+    max-width: var(--container-narrow);
     margin-inline: auto;
     padding-inline: max(var(--space-4), env(safe-area-inset-left, 0px)) max(var(--space-4), env(safe-area-inset-right, 0px));
   }
@@ -188,7 +157,7 @@
   .cover {
     @include sunset(15% 20%, 85% 75%, 70% 10%, 115deg, 1,
       (nl-lime 4s ease-in-out infinite alternate,
-       nl-plum 9s ease-in-out infinite,
+       nl-violet 9s ease-in-out infinite,
        nl-apricot 5s ease-in-out infinite alternate));
 
     .wrap {
@@ -221,14 +190,14 @@
   .wordmark {
     width: min(240px, 60%);
     aspect-ratio: 10876 / 2381;
-    background: #fff;
+    background: var(--color-on-sunset);
   }
 
   .sub {
     max-width: 52ch;
     font-size: var(--text-xl);
     line-height: 1.5;
-    text-shadow: var(--text-glow);
+    text-shadow: var(--text-shadow-on-artwork);
   }
 
   // ---------- Main column ----------
@@ -252,7 +221,7 @@
     font-weight: 600;
     font-size: clamp(1.5rem, 3vw, 2rem);
     line-height: 1.2;
-    color: var(--accent);
+    color: var(--color-accent);
   }
 
   .pull-arrow {
@@ -272,9 +241,9 @@
     padding-top: var(--space-6);
     border-top: 3px solid;
 
-    &--cx     { border-color: var(--magenta); }
-    &--gravel { border-color: var(--apricot); }
-    &--mtb    { border-color: var(--lime); }
+    &--cx     { border-color: var(--color-magenta); }
+    &--gravel { border-color: var(--color-apricot); }
+    &--mtb    { border-color: var(--color-lime); }
 
     @media (max-width: 768px) {
       grid-template-columns: minmax(0, 1fr);
@@ -294,7 +263,7 @@
       gap: var(--space-4);
       align-items: baseline;
       padding: var(--space-3) 0;
-      border-bottom: 1px solid var(--rule);
+      border-bottom: 1px solid var(--color-rule);
 
       &:last-child { border-bottom: 0; }
     }
@@ -308,27 +277,27 @@
     font-weight: var(--weight-black);
     font-size: var(--text-xl);
     line-height: 1;
-    color: var(--fg);
+    color: var(--color-fg);
 
-    &--first { color: var(--accent); }
+    &--first { color: var(--color-accent); }
   }
 
-  .who { color: var(--muted); }
+  .who { color: var(--color-muted); }
 
   // ---------- Reach band ----------
 
   .reach-band {
     @include sunset(85% 80%, 15% 25%, 30% 90%, 295deg, -1,
       (nl-lime 4.5s ease-in-out -2s infinite alternate,
-       nl-plum 11s ease-in-out -4.5s infinite reverse,
+       nl-violet 11s ease-in-out -4.5s infinite reverse,
        nl-apricot 6s ease-in-out -3s infinite alternate));
 
     // Break out of the 900px column to the full viewport width, keeping
     // the content aligned with the column.
     margin-inline: calc(50% - 50vw);
-    padding: var(--space-16) max(var(--space-4), calc(50vw - var(--wrap) / 2 + var(--space-4))) var(--space-16);
+    padding: var(--space-16) max(var(--space-4), calc(50vw - var(--container-narrow) / 2 + var(--space-4))) var(--space-16);
 
-    .prose { text-shadow: var(--text-glow); }
+    .prose { text-shadow: var(--text-shadow-on-artwork); }
 
     .stat-row { --cols: 4; }
 
@@ -368,9 +337,9 @@
     img {
       width: 50%;
       height: auto;
-      background: var(--bone);
-      border: 1px solid var(--rule);
-      border-radius: 6px;
+      background: var(--color-bone);
+      border: 1px solid var(--color-rule);
+      border-radius: var(--radius);
     }
   }
 

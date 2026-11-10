@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 // Removes the footer's default top margin when it directly follows the
 // Inclusivity panel, so the panel runs flush into the footer.
 .page:has(> .about-values--panel:last-child) + .footer {
@@ -36,9 +38,9 @@
   }
 
   &__box {
-    background-color: var(--color-black);
-    border: var(--border-medium) var(--color-white);
-    box-shadow: 8px 8px 0 var(--color-green);
+    background-color: var(--color-bg);
+    border: var(--border-medium) var(--color-fg);
+    box-shadow: 8px 8px 0 var(--color-lime);
     max-width: 560px;
     padding: var(--space-8);
 
@@ -55,7 +57,7 @@
     letter-spacing: var(--tracking-tight);
     text-transform: uppercase;
     line-height: 0.95;
-    color: var(--color-white);
+    color: var(--color-fg);
     margin-bottom: var(--space-4);
   }
 
@@ -66,20 +68,20 @@
 
     p {
       font-size: var(--text-lg);
-      color: var(--color-gray-300);
+      color: var(--color-muted);
       line-height: 1.65;
     }
   }
 }
 
-// Inclusivity — a full-color panel echoing the Home hero's gradient/grain/
-// scanlines treatment: a giant glowing headline, a tilted scrolling marquee
-// cutting across it, and a bordered pull-quote box (same recipe as the
-// Our Story hero box above, in pink instead of green).
+// Inclusivity — a panel on the artwork: a giant glowing headline, a tilted
+// scrolling marquee cutting across it, and a bordered quote box (same recipe
+// as the Our Story box above, with an apricot offset instead of lime).
 .about-values {
   &--panel {
+    @include artwork(center 30%);
     position: relative;
-    background: var(--gradient-hero);
+    overflow: hidden; // clips the rotated marquee's corners at the edges
     padding-block: var(--space-16) var(--space-12);
   }
 
@@ -95,7 +97,7 @@
     text-transform: none;
     line-height: 0.85;
     font-size: clamp(5rem, 13vw, 13rem);
-    color: var(--color-white);
+    color: var(--color-on-sunset);
     animation: incl-glow 4s ease-in-out infinite;
 
     @media (prefers-reduced-motion: reduce) {
@@ -104,8 +106,7 @@
   }
 
   // Wider than the section and rotated, so it reads as a banner cutting
-  // across the panel rather than a flat rule — .grain's overflow:hidden
-  // (on the section) clips the rotated corners at the true edges.
+  // across the panel rather than a flat rule.
   &__marquee {
     position: relative;
     z-index: 1;
@@ -127,9 +128,10 @@
   }
 
   &__box {
-    background-color: var(--color-black);
-    border: var(--border-medium) var(--color-white);
-    box-shadow: 8px 8px 0 var(--color-pink);
+    background-color: var(--color-bg);
+    border: var(--border-medium) var(--color-fg);
+    box-shadow: 8px 8px 0 var(--color-apricot);
+    border-radius: var(--radius);
     max-width: 560px;
     padding: var(--space-8);
     display: flex;
@@ -138,7 +140,7 @@
 
     p {
       font-size: var(--text-lg);
-      color: var(--color-gray-100);
+      color: var(--color-muted);
       line-height: 1.6;
     }
 
@@ -150,57 +152,8 @@
 }
 
 @keyframes incl-glow {
-  0%, 100%  { text-shadow: 0 0 20px rgba(61, 255, 107, 0.55); }
-  50%       { text-shadow: 0 0 36px rgba(204, 51, 255, 0.7); }
-}
-
-.apply-module {
-  &__box {
-    max-width: 960px;
-    margin-inline: auto;
-    text-align: left;
-    background-color: var(--color-black);
-    border: var(--border-medium) var(--color-white);
-    box-shadow: 8px 8px 0 var(--color-purple);
-    padding: var(--space-12) var(--space-8);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
-
-    @media (max-width: 640px) {
-      padding: var(--space-8) var(--space-6);
-    }
-  }
-
-  &__title {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: var(--weight-black);
-    letter-spacing: var(--tracking-tight);
-    text-transform: uppercase;
-    line-height: 0.95;
-    color: var(--color-white);
-    margin: 0;
-  }
-
-  &__body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    align-self: stretch;
-    width: 100%;
-
-    p {
-      color: var(--color-gray-300);
-      font-size: var(--text-lg);
-      line-height: 1.6;
-    }
-  }
-
-  &__cta {
-    margin-top: var(--space-4);
-  }
+  0%, 100%  { text-shadow: 0 0 20px color-mix(in srgb, var(--color-lime) 55%, transparent); }
+  50%       { text-shadow: 0 0 36px color-mix(in srgb, var(--color-violet) 70%, transparent); }
 }
 
 .about-riders {
@@ -228,20 +181,28 @@
     }
   }
 
-  // Adjust overlap by changing margin-top here
+  // 5 cards on the top row (the current riders plus the first TBA), then
+  // 4 centered underneath: a 10-column grid where each card spans 2 and the
+  // 6th card starts one column in. margin-top sets how far the cards
+  // overlap the heading.
   &__grid {
+    position: relative;
+    z-index: var(--z-raised);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(10, 1fr);
     gap: var(--space-6);
     margin-inline: 2.5%;
     margin-top: -180px;
-    position: relative;
-    z-index: var(--z-raised);
     padding-bottom: var(--space-24);
+
+    > * { grid-column: span 2; }
+    > :nth-child(6) { grid-column: 2 / span 2; }
 
     @media (max-width: 900px) {
       grid-template-columns: repeat(2, 1fr);
       margin-top: -90px;
+
+      > *, > :nth-child(6) { grid-column: auto; }
     }
 
     @media (max-width: 480px) {
@@ -252,7 +213,26 @@
 
   // Cards semi-transparent so the heading bleeds through behind them
   .rider-card {
-    background-color: rgba(26, 26, 26, 0.72);
+    background-color: color-mix(in srgb, var(--color-surface) 72%, transparent);
     backdrop-filter: blur(6px);
   }
+
+  // "?" placeholder for riders still to be announced
+  .rider-card__photo--tba {
+    display: grid;
+    place-items: center;
+    @include artwork;
+    font-family: var(--font-display);
+    font-weight: var(--weight-black);
+    font-size: clamp(6rem, 12vw, 10rem);
+    line-height: 1;
+    color: var(--color-on-sunset);
+    text-shadow: var(--text-shadow-on-artwork);
+  }
+
+  // A different crop of the artwork on each placeholder
+  .rider-card:nth-child(6) .rider-card__photo--tba { background-position: 15% 85%, center; }
+  .rider-card:nth-child(7) .rider-card__photo--tba { background-position: 85% 20%, center; }
+  .rider-card:nth-child(8) .rider-card__photo--tba { background-position: 40% 100%, center; }
+  .rider-card:nth-child(9) .rider-card__photo--tba { background-position: 100% 60%, center; }
 }

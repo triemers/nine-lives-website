@@ -4,8 +4,8 @@
   left: 0;
   right: 0;
   z-index: var(--z-nav);
-  background-color: var(--color-black);
-  border-bottom: 1px solid var(--color-gray-700);
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-rule);
 
   &__inner {
     display: flex;
@@ -24,12 +24,12 @@
     font-style: italic;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: var(--color-white);
+    color: var(--color-fg);
     line-height: 1;
     flex-shrink: 0;
 
     &:hover {
-      color: var(--color-green);
+      color: var(--color-accent);
     }
   }
 
@@ -59,13 +59,13 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 0;
-      background-color: var(--color-black);
-      border-bottom: 1px solid var(--color-gray-700);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-rule);
       padding: var(--space-4) var(--space-8);
 
       li {
         width: 100%;
-        border-bottom: 1px solid var(--color-gray-900);
+        border-bottom: 1px solid var(--color-rule);
       }
     }
 
@@ -84,15 +84,15 @@
     font-weight: var(--weight-medium);
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     transition: color var(--duration-base) var(--ease-out);
 
     &:hover {
-      color: var(--color-white);
+      color: var(--color-fg);
     }
 
     &--active {
-      color: var(--color-white);
+      color: var(--color-fg);
       position: relative;
 
       &::after {
@@ -102,7 +102,7 @@
         right: 0;
         bottom: -4px;
         height: 1px;
-        background: linear-gradient(90deg, var(--color-green), var(--color-purple));
+        background: linear-gradient(90deg, var(--color-lime), var(--color-magenta));
 
         @media (max-width: 768px) {
           display: none;
@@ -121,7 +121,7 @@
     display: none;
     background: none;
     border: none;
-    color: var(--color-white);
+    color: var(--color-fg);
     font-size: 1.25rem;
     cursor: pointer;
     padding: var(--space-2);

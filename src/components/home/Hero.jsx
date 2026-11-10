@@ -3,7 +3,9 @@ import '../../styles/hero.scss'
 
 export default function Hero() {
   return (
-    <section className="hero grain grain--heavy scanlines">
+    <section className="hero">
+      <div className="hero__bg" aria-hidden="true" />
+      <div className="hero__bg hero__bg--flow" aria-hidden="true" />
       <div className="hero__logo-wrap">
         <img
           src={logo}

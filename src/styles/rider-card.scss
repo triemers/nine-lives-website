@@ -1,0 +1,133 @@
+// Rider trading card — src/components/about/RiderCard.jsx
+// On hover the card lifts, the photo warms up, and two corner brackets
+// draw in from the top-left and bottom-right.
+
+.rider-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: var(--border-thin) var(--color-rule);
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+
+  // Corner brackets
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 0 solid var(--color-accent-2);
+    transition:
+      width var(--duration-slow) var(--ease-out),
+      height var(--duration-slow) var(--ease-out),
+      border-width var(--duration-slow) var(--ease-out);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::before { top: -2px; left: -2px; }
+  &::after  { bottom: -2px; right: -2px; }
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--color-accent-2) 35%, transparent);
+    box-shadow: 0 8px 32px color-mix(in srgb, var(--color-ink) 25%, transparent);
+    transform: translateY(-4px);
+
+    &::before {
+      width: 32px;
+      height: 32px;
+      border-top-width: 2px;
+      border-left-width: 2px;
+    }
+
+    &::after {
+      width: 32px;
+      height: 32px;
+      border-bottom-width: 2px;
+      border-right-width: 2px;
+    }
+  }
+
+  &__photo-wrap {
+    overflow: hidden;
+  }
+
+  &__photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(30%) contrast(1.05);
+    transition:
+      filter var(--duration-slow) var(--ease-out),
+      transform var(--duration-slow) var(--ease-out);
+  }
+
+  &:hover &__photo {
+    filter: grayscale(0%) contrast(1.1);
+    transform: scale(1.04);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border-top: var(--border-thin) var(--color-rule);
+  }
+
+  &__name {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: var(--weight-black);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-tight);
+  }
+
+  // Big faint roster number in the corner
+  &__number {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: var(--weight-black);
+    line-height: 1;
+    letter-spacing: var(--tracking-tight);
+    color: color-mix(in srgb, var(--color-on-sunset) 7%, transparent);
+    user-select: none;
+    pointer-events: none;
+    transition: color var(--duration-slow) var(--ease-out);
+  }
+
+  &:hover &__number {
+    color: color-mix(in srgb, var(--color-lime) 12%, transparent);
+  }
+
+  &__pronouns {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    color: var(--color-muted);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  &__bio {
+    margin-top: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    line-height: 1.55;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin-top: var(--space-1);
+  }
+}

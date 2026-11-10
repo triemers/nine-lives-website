@@ -10,14 +10,26 @@ const sorted = [
 export default function RaceSchedule() {
   return (
     <section className="schedule section">
-      <div className="container">
+      <div className="schedule__bg" aria-hidden="true" />
+      <div className="container schedule__inner">
 
-        <h2 className="schedule__heading">Race Schedule</h2>
-        <ul className="schedule__list">
-          {sorted.map((race) => (
-            <RaceRow key={race.id} race={race} past={race.status === 'completed'} />
-          ))}
-        </ul>
+        <h2 className="schedule__heading">
+          <s className="schedule__heading-old">Race Schedule</s>
+          <span className="schedule__heading-next">See you in 2027</span>
+        </h2>
+        <div className="schedule__recap">
+          <p>Here's how it went:</p>
+          <Link to="/recap-2026" className="btn btn--neon">
+            2026 Season Recap →
+          </Link>
+        </div>
+        <div className="schedule__card">
+          <ul className="schedule__list">
+            {sorted.map((race) => (
+              <RaceRow key={race.id} race={race} past={race.status === 'completed'} />
+            ))}
+          </ul>
+        </div>
 
       </div>
     </section>
@@ -59,7 +71,7 @@ function RaceRow({ race, past = false }) {
         )}
       </div>
       <span className="schedule__location">{race.location}</span>
-      <span className={`schedule__tag tag tag--${past ? 'default' : 'green'}`}>
+      <span className="schedule__discipline">
         {race.discipline}
       </span>
     </li>

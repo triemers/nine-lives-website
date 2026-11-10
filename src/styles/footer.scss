@@ -1,6 +1,13 @@
 .footer {
-  background-color: var(--color-black);
-  border-top: 1px solid var(--color-gray-700);
+  // Always plum with bone text, in both themes. Re-pointing the role
+  // variables here keeps every child style below unchanged.
+  --color-fg:     var(--color-bone);
+  --color-muted:  color-mix(in srgb, var(--color-bone) 75%, var(--color-violet));
+  --color-rule:   color-mix(in srgb, var(--color-bone) 20%, var(--color-violet));
+  --color-accent: var(--color-lime);
+
+  background-color: var(--color-violet);
+  color: var(--color-fg);
   padding-top: var(--space-16);
   padding-bottom: var(--space-8);
   padding-inline: 20px;
@@ -43,7 +50,7 @@
 
   &__brand-tagline {
     font-size: var(--text-sm);
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     line-height: 1.5;
     max-width: 220px;
   }
@@ -54,7 +61,7 @@
     font-weight: var(--weight-medium);
     letter-spacing: var(--tracking-widest);
     text-transform: uppercase;
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     margin-bottom: var(--space-4);
   }
 
@@ -69,11 +76,11 @@
     display: inline-block;
     padding-block: var(--space-1);
     font-size: var(--text-sm);
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     transition: color var(--duration-base) var(--ease-out);
 
     &:hover {
-      color: var(--color-white);
+      color: var(--color-fg);
     }
   }
 
@@ -86,14 +93,14 @@
   &__social-link {
     padding-block: var(--space-1);
     font-size: var(--text-sm);
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     transition: color var(--duration-base) var(--ease-out);
     display: flex;
     align-items: center;
     gap: var(--space-2);
 
     &:hover {
-      color: var(--color-green);
+      color: var(--color-accent);
     }
   }
 
@@ -113,7 +120,12 @@
 
   &__copyright {
     font-size: var(--text-xs);
-    color: var(--color-gray-300);
+    color: var(--color-muted);
     letter-spacing: var(--tracking-wide);
   }
+}
+
+// When a page ends on the sponsors band, the footer sits right under it
+.page:has(> .sponsors:last-child) + .footer {
+  margin-top: 0;
 }
