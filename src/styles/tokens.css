@@ -2,7 +2,7 @@
    NINE LIVES CYCLING COLLECTIVE — Design Tokens
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap');
 
 :root {
 
@@ -115,9 +115,7 @@
      BORDER
   ---------------------------------------------------------- */
 
-  --radius-none: 0;
-  --radius-sm:   2px;
-  --radius-full: 9999px;
+  --radius: 4px; /* one corner radius for the whole site */
 
   --border-thin:   1px solid;
   --border-medium: 2px solid;
@@ -589,7 +587,7 @@ a {
   font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  border-radius: var(--radius-none);
+  border-radius: var(--radius);
   border: var(--border-medium) transparent;
   padding: var(--space-3) var(--space-6);
   cursor: pointer;
@@ -731,7 +729,7 @@ a {
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   border: 1px solid currentColor;
 }
 
