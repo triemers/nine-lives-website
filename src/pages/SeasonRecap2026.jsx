@@ -48,7 +48,7 @@ const DISCIPLINES = [
 ];
 
 const REACH = [
-  { num: "70K", label: "social impressions a month" },
+  { num: "110K", label: "social impressions a month" },
   { num: "17%", label: "average Instagram engagement" },
   { num: "66K", label: "views on our top post" },
   { num: "100+", label: "events raced and hosted as a team" },
@@ -93,7 +93,7 @@ export default function SeasonRecap2026() {
       <main className="wrap">
         <section>
           <h2>The results</h2>
-          <p className="pull">Chloë Spritz won every cyclocross race she entered in 2026.</p>
+          <p className="pull"><span className="pull-arrow" aria-hidden="true">→</span>Chloë Spritz won every cyclocross race she entered in 2026.</p>
           <div className="disciplines">
             {DISCIPLINES.map((d) => (
               <div className={`disc ${d.tone}`} key={d.name}>
@@ -215,7 +215,8 @@ const CSS = `
 .nl-recap main.wrap{display:grid; gap:96px; padding-block:72px 96px}
 .nl-recap section{display:grid; gap:28px; min-width:0}
 
-.nl-recap .pull{font-family:var(--font-serif); font-style:italic; font-weight:600; font-size:clamp(1.5rem,3vw,2rem); line-height:1.2; max-width:36ch; color:var(--accent)}
+.nl-recap .pull{font-family:var(--font-serif); font-style:italic; font-weight:600; font-size:clamp(1.5rem,3vw,2rem); line-height:1.2; color:var(--accent)}
+.nl-recap .pull-arrow{font-style:normal; margin-right:.4em}
 .nl-recap .disciplines{display:grid; gap:40px}
 .nl-recap .disc{display:grid; grid-template-columns:200px minmax(0,1fr); gap:24px; padding-top:20px; border-top:3px solid var(--magenta)}
 .nl-recap .disc.gravel{border-color:var(--apricot)}
