@@ -30,6 +30,7 @@ const DISCIPLINES = [
       { place: "1st", race: "MidSouth", category: "Pro Non-binary", rider: "Robin Cummings" },
       { place: "1st", race: "FoCo Fondo", category: "Pro Non-binary", rider: "Robin Cummings" },
       { place: "1st", race: "Cascadia Super Gravel", rider: "Robin Cummings" },
+      { place: "1st", race: "Odyssey of the VOG", rider: "Tori Riemersma" },
       { place: "8th", race: "MidSouth", category: "Pro Non-binary", rider: "Cade Spritz" },
       { place: "8th", race: "FoCo Fondo", category: "Pro Women", rider: "Chloë Spritz" },
       { place: "13th", race: "FoCo Fondo", category: "Pro Women", rider: "Tori Riemersma" },
@@ -54,8 +55,8 @@ const REACH = [
 ];
 
 const NEXT = [
-  { num: "4 → 9", text: "riders on the roster, with five new women and non-binary athletes to announce." },
-  { num: "Mar–Dec", text: "MidSouth and Sea Otter in spring, FoCo Fondo and Gravel Worlds in summer, cyclocross through winter." },
+  { num: "9 lives for 9 Lives", text: "Our roster grows from four riders to nine, with five new women and non-binary athletes to announce." },
+  { num: "10 months of racing", text: "From MidSouth and Sea Otter in spring to FoCo Fondo and Gravel Worlds in summer, then cyclocross through winter, and more to be announced." },
 ];
 
 export default function SeasonRecap2026() {
@@ -155,15 +156,18 @@ export default function SeasonRecap2026() {
           <div className="next">
             {NEXT.map((n) => (
               <div key={n.num}>
-                <span className="num">{n.num}</span>
+                <h3>{n.num}</h3>
                 <p>{n.text}</p>
               </div>
             ))}
           </div>
-          <p className="prose">
-            We'd love to keep racing with you. Let's find 20 minutes to talk before your 2027 plans are set:{" "}
-            <a href="mailto:ninelivescycling@gmail.com">ninelivescycling@gmail.com</a>
-          </p>
+          <div className="cta">
+            <h3>We'd love to keep racing with you</h3>
+            <p className="prose">
+              Let's find 20 minutes to talk before your 2027 plans are set:{" "}
+              <a href="mailto:ninelivescycling@gmail.com">ninelivescycling@gmail.com</a>
+            </p>
+          </div>
         </section>
       </main>
     </div>
@@ -234,9 +238,10 @@ const CSS = `
 .nl-recap .thanks-text{display:grid; gap:20px}
 .nl-recap .kit{display:flex; gap:12px}
 .nl-recap .kit img{width:50%; height:auto; background:var(--bone); border:1px solid var(--rule); border-radius:6px}
-.nl-recap .next{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px}
-.nl-recap .next div{display:grid; gap:10px; align-content:start; max-width:40ch}
-.nl-recap .next .num{font-size:clamp(2.5rem,5vw,4rem); color:var(--fg)}
+.nl-recap .next{display:grid; grid-template-columns:minmax(0,1fr); gap:40px}
+.nl-recap .next div{display:grid; gap:10px; align-content:start}
+.nl-recap .next p{max-width:60ch}
+.nl-recap .cta{display:grid; gap:10px; margin-top:16px}
 
 @media (max-width:760px){
   .nl-recap main.wrap{gap:72px; padding-block:56px 72px}
