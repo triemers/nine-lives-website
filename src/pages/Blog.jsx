@@ -15,11 +15,9 @@ const TICKER_NAMES = [
 ]
 const TICKER_ITEMS = [...TICKER_NAMES, ...TICKER_NAMES, ...TICKER_NAMES]
 
-const MINOR_ACCENTS = ['purple', 'pink']
+const ACCENTS = ['purple', 'pink']
 
 export default function Blog() {
-  const [featuredPost, ...otherPosts] = POSTS
-
   return (
     <main className="page">
       <section className="blog section">
@@ -37,17 +35,16 @@ export default function Blog() {
         <Ticker items={TICKER_ITEMS} variant="thin" speed={85} />
 
         <div className="container">
+          {/* Top row: newest post at 2/3 width, the next at 1/3. Then 50/50 rows. */}
           <div className="blog__list">
-            {featuredPost && (
-              <div className="blog__featured">
-                <BlogCard post={featuredPost} featured accent="green" />
-              </div>
-            )}
-            <div className="blog__minor-list">
-              {otherPosts.map((post, index) => (
-                <BlogCard key={post.slug} post={post} accent={MINOR_ACCENTS[index % MINOR_ACCENTS.length]} />
-              ))}
-            </div>
+            {POSTS.map((post, index) => (
+              <BlogCard
+                key={post.slug}
+                post={post}
+                featured={index === 0}
+                accent={index === 0 ? 'green' : ACCENTS[(index - 1) % ACCENTS.length]}
+              />
+            ))}
           </div>
         </div>
       </section>

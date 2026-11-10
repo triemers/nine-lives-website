@@ -1,4 +1,5 @@
 import fm from 'front-matter'
+import recapCover from '../assets/images/hero-abstract-sm.webp'
 
 const modules = import.meta.glob('/content/blog/*.md', { eager: true, query: '?raw', import: 'default' })
 
@@ -26,10 +27,26 @@ function extractExcerpt(markdown, { minBlockLength = 60, sentenceCount = 2, maxL
   return ''
 }
 
-export const POSTS = Object.entries(modules)
-  .map(([path, raw]) => {
+// Posts that live on their own page instead of a markdown file. `href` is
+// where the card links to.
+const PAGE_POSTS = [
+  {
+    slug: 'recap-2026',
+    href: '/recap-2026',
+    title: '2026 Season Recap',
+    date: '2026-11-10',
+    tags: ['Season Recap'],
+    cover: recapCover,
+    excerpt: "Two world titles and one very good year. Here's what our women and non-binary riders did in 2026, and where we're headed next.",
+  },
+]
+
+export const POSTS = [
+  ...Object.entries(modules).map(([path, raw]) => {
     const { attributes, body } = fm(raw)
     const slug = path.split('/').pop().replace(/\.md$/, '')
     return { slug, body, excerpt: extractExcerpt(body), ...attributes }
-  })
+  }),
+  ...PAGE_POSTS,
+]
   .sort((a, b) => new Date(b.date) - new Date(a.date))
