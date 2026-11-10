@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export default function BlogCard({ post, featured = false, accent = 'green' }) {
+export default function BlogCard({ post, featured = false, accent = 'lime' }) {
   // Page posts (like the season recap) link to their own route
   const to = post.href ?? `/blog/${post.slug}`
 
@@ -23,10 +23,10 @@ export default function BlogCard({ post, featured = false, accent = 'green' }) {
             {new Date(post.date).toLocaleDateString(undefined, { timeZone: 'UTC' })}
           </span>
           {post.disciplines?.map(discipline => (
-            <span key={discipline} className="tag tag--filled tag--green">{discipline}</span>
+            <span key={discipline} className="tag tag--lime">{discipline}</span>
           ))}
           {post.tags?.map(tag => (
-            <span key={tag} className="tag tag--filled tag--purple">{tag}</span>
+            <span key={tag} className="tag tag--magenta">{tag}</span>
           ))}
         </div>
         <h2 className="blog-card__title">

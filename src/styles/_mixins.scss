@@ -1,0 +1,19 @@
+// Shared Sass mixins. Pull in with `@use 'mixins' as *;`
+
+// The artwork as a section background, with the sunset gradient behind it
+// while the image loads. $position picks the crop.
+@mixin artwork($position: center) {
+  background:
+    var(--artwork) $position / cover no-repeat,
+    var(--gradient-sunset);
+}
+
+// White text on the artwork: re-points the text roles so every child style
+// that uses them (headings, muted copy, outline buttons) turns white.
+@mixin on-artwork {
+  --color-fg:     var(--color-on-sunset);
+  --color-muted:  color-mix(in srgb, var(--color-on-sunset) 90%, transparent);
+  --color-accent: var(--color-on-sunset);
+
+  color: var(--color-fg);
+}

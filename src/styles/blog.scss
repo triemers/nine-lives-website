@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 .blog {
   padding-block: var(--space-24);
 
@@ -54,9 +56,9 @@
     transform: translate(8px, 8px);
     z-index: -1;
 
-    &--green  { background-color: var(--color-lime); }
-    &--purple { background-color: var(--color-magenta); }
-    &--pink   { background-color: var(--color-apricot); }
+    &--lime    { background-color: var(--color-lime); }
+    &--magenta { background-color: var(--color-magenta); }
+    &--apricot { background-color: var(--color-apricot); }
   }
 
   &__photo {
@@ -141,19 +143,10 @@
   margin-top: 0;
 }
 
+// On the artwork in both themes, with white type
 .blog-subscribe {
-  // The artwork texture in both themes, with white type on top
-  --color-fg:    var(--color-on-sunset);
-  --color-muted: color-mix(in srgb, var(--color-on-sunset) 90%, transparent);
-
-  background:
-    url("../assets/images/hero-abstract.webp") center 60% / cover no-repeat,
-    var(--gradient-sunset);
-  color: var(--color-fg);
-
-  @media (max-width: 768px) {
-    background-image: url("../assets/images/hero-abstract-sm.webp"), var(--gradient-sunset);
-  }
+  @include artwork(center 60%);
+  @include on-artwork;
 
   &__heading {
     width: 100%;

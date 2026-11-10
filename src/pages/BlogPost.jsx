@@ -36,10 +36,10 @@ export default function BlogPost() {
           {(post.tags || post.disciplines) && (
             <div className="blog-post__tags">
               {post.disciplines?.map(discipline => (
-                <span key={discipline} className="tag tag--filled tag--green">{discipline}</span>
+                <span key={discipline} className="tag tag--lime">{discipline}</span>
               ))}
               {post.tags?.map(tag => (
-                <span key={tag} className="tag tag--filled tag--purple">{tag}</span>
+                <span key={tag} className="tag tag--magenta">{tag}</span>
               ))}
             </div>
           )}

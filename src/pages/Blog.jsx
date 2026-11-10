@@ -15,7 +15,7 @@ const TICKER_NAMES = [
 ]
 const TICKER_ITEMS = [...TICKER_NAMES, ...TICKER_NAMES, ...TICKER_NAMES]
 
-const ACCENTS = ['purple', 'pink']
+const ACCENTS = ['magenta', 'apricot']
 
 export default function Blog() {
   return (
@@ -42,7 +42,7 @@ export default function Blog() {
                 key={post.slug}
                 post={post}
                 featured={index === 0}
-                accent={index === 0 ? 'green' : ACCENTS[(index - 1) % ACCENTS.length]}
+                accent={index === 0 ? 'lime' : ACCENTS[(index - 1) % ACCENTS.length]}
               />
             ))}
           </div>

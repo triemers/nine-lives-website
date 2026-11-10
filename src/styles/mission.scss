@@ -74,7 +74,7 @@
     min-height: 480px;
     border-radius: calc(var(--radius) - 4px); // nests inside the 4px frame
 
-    // Light grain (from the .grain token), kept subtle so the photo stays clean
+    // Light grain (.grain), kept subtle so the photo stays clean
     &::after {
       opacity: 0.15;
     }

@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 // Removes the footer's default top margin when it directly follows the
 // Inclusivity panel, so the panel runs flush into the footer.
 .page:has(> .about-values--panel:last-child) + .footer {
@@ -72,24 +74,15 @@
   }
 }
 
-// Inclusivity — a full-color panel echoing the Home hero's gradient/grain/
-// scanlines treatment: a giant glowing headline, a tilted scrolling marquee
-// cutting across it, and a bordered pull-quote box (same recipe as the
-// Our Story hero box above, in pink instead of green).
+// Inclusivity — a panel on the artwork: a giant glowing headline, a tilted
+// scrolling marquee cutting across it, and a bordered quote box (same recipe
+// as the Our Story box above, with an apricot offset instead of lime).
 .about-values {
   &--panel {
+    @include artwork(center 30%);
     position: relative;
-    // The artwork texture, with the sunset gradient as a fallback while it loads
-    background:
-      url('../assets/images/hero-abstract.webp') center 30% / cover no-repeat,
-      var(--gradient-sunset);
+    overflow: hidden; // clips the rotated marquee's corners at the edges
     padding-block: var(--space-16) var(--space-12);
-
-    @media (max-width: 768px) {
-      background-image:
-        url('../assets/images/hero-abstract-sm.webp'),
-        var(--gradient-sunset);
-    }
   }
 
   &__title {
@@ -113,8 +106,7 @@
   }
 
   // Wider than the section and rotated, so it reads as a banner cutting
-  // across the panel rather than a flat rule — .grain's overflow:hidden
-  // (on the section) clips the rotated corners at the true edges.
+  // across the panel rather than a flat rule.
   &__marquee {
     position: relative;
     z-index: 1;
@@ -160,57 +152,8 @@
 }
 
 @keyframes incl-glow {
-  0%, 100%  { text-shadow: 0 0 20px rgba(161, 204, 60, 0.55); }
-  50%       { text-shadow: 0 0 36px rgba(55, 40, 105, 0.7); }
-}
-
-.apply-module {
-  &__box {
-    max-width: 960px;
-    margin-inline: auto;
-    text-align: left;
-    background-color: var(--color-bg);
-    border: var(--border-medium) var(--color-fg);
-    box-shadow: 8px 8px 0 var(--color-magenta);
-    padding: var(--space-12) var(--space-8);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
-
-    @media (max-width: 640px) {
-      padding: var(--space-8) var(--space-6);
-    }
-  }
-
-  &__title {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: var(--weight-black);
-    letter-spacing: var(--tracking-tight);
-    text-transform: uppercase;
-    line-height: 0.95;
-    color: var(--color-fg);
-    margin: 0;
-  }
-
-  &__body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    align-self: stretch;
-    width: 100%;
-
-    p {
-      color: var(--color-muted);
-      font-size: var(--text-lg);
-      line-height: 1.6;
-    }
-  }
-
-  &__cta {
-    margin-top: var(--space-4);
-  }
+  0%, 100%  { text-shadow: 0 0 20px color-mix(in srgb, var(--color-lime) 55%, transparent); }
+  50%       { text-shadow: 0 0 36px color-mix(in srgb, var(--color-violet) 70%, transparent); }
 }
 
 .about-riders {
@@ -238,27 +181,28 @@
     }
   }
 
-  // Adjust overlap by changing margin-top here
+  // 5 cards on the top row (the current riders plus the first TBA), then
+  // 4 centered underneath: a 10-column grid where each card spans 2 and the
+  // 6th card starts one column in. margin-top sets how far the cards
+  // overlap the heading.
   &__grid {
+    position: relative;
+    z-index: var(--z-raised);
     display: grid;
-    // 5 cards on the top row (the current riders plus the first TBA), then
-    // 4 centered underneath: a 10-column grid where each card spans 2 and
-    // the 6th card starts one column in.
     grid-template-columns: repeat(10, 1fr);
     gap: var(--space-6);
+    margin-inline: 2.5%;
+    margin-top: -180px;
+    padding-bottom: var(--space-24);
 
     > * { grid-column: span 2; }
     > :nth-child(6) { grid-column: 2 / span 2; }
-    margin-inline: 2.5%;
-    margin-top: -180px;
-    position: relative;
-    z-index: var(--z-raised);
-    padding-bottom: var(--space-24);
 
     @media (max-width: 900px) {
       grid-template-columns: repeat(2, 1fr);
-      > *, > :nth-child(6) { grid-column: auto; }
       margin-top: -90px;
+
+      > *, > :nth-child(6) { grid-column: auto; }
     }
 
     @media (max-width: 480px) {
@@ -277,13 +221,13 @@
   .rider-card__photo--tba {
     display: grid;
     place-items: center;
-    background: url("../assets/images/hero-abstract-sm.webp") center / cover no-repeat, var(--gradient-sunset);
+    @include artwork;
     font-family: var(--font-display);
     font-weight: var(--weight-black);
     font-size: clamp(6rem, 12vw, 10rem);
     line-height: 1;
     color: var(--color-on-sunset);
-    text-shadow: 0 2px 24px rgba(55, 40, 105, 0.35);
+    text-shadow: var(--text-shadow-on-artwork);
   }
 
   // A different crop of the artwork on each placeholder

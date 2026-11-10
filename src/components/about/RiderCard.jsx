@@ -1,3 +1,5 @@
+import '../../styles/rider-card.scss'
+
 // Riders without a photo (the ones still to be announced) get a "?" over the
 // artwork; pronouns, bio and disciplines only show when the rider has them.
 export default function RiderCard({ rider }) {
@@ -25,7 +27,7 @@ export default function RiderCard({ rider }) {
         {rider.disciplines?.length > 0 && (
           <div className="rider-card__tags">
             {rider.disciplines.map(d => (
-              <span key={d} className="tag tag--filled tag--green">{d}</span>
+              <span key={d} className="tag tag--lime">{d}</span>
             ))}
           </div>
         )}

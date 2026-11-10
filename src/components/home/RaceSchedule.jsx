@@ -71,7 +71,7 @@ function RaceRow({ race, past = false }) {
         )}
       </div>
       <span className="schedule__location">{race.location}</span>
-      <span className={`schedule__tag tag tag--${past ? 'default' : 'green'}`}>
+      <span className="schedule__discipline">
         {race.discipline}
       </span>
     </li>

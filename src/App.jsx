@@ -10,6 +10,7 @@ import BlogPost from './pages/BlogPost'
 import Merch from './pages/Merch'
 import SeasonRecap2026 from './pages/SeasonRecap2026'
 import './styles/tokens.css'
+import './styles/base.css'
 import './styles/layout.scss'
 
 export default function App() {

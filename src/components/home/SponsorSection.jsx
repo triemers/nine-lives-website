@@ -3,7 +3,7 @@ import '../../styles/sponsors.scss'
 
 export default function SponsorSection() {
   return (
-    <section className="sponsors section">
+    <section className="sponsors section theme-light">
       <div className="container">
         <h2 className="sponsors__heading">Supported By</h2>
         <div className="sponsors__row">
@@ -21,7 +21,7 @@ function SponsorLogo({ sponsor }) {
     <img
       src={sponsor.logo}
       alt={sponsor.name}
-      className={`sponsors__logo${sponsor.filterMode === 'invert' ? ' sponsors__logo--invert' : ''}`}
+      className="sponsors__logo"
     />
   ) : (
     <span className="sponsors__name-fallback">{sponsor.name}</span>

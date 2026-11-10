@@ -5,30 +5,25 @@ import athleticLogo  from '../assets/sponsors/athletic.png'
 /*
   To add a logo: drop the file in src/assets/sponsors/, import it above,
   and set the logo field below. Set logo to null to show name as text fallback.
-  filterMode:
-    'invert' — white logos on dark background (black-on-light source files)
-    'none'   — logo is already designed for dark backgrounds
+  Logos show in a single ink color, so any logo file works.
 */
 export const sponsors = [
   {
     id:         'btd',
     name:       'Bike Tires Direct',
     logo:       btdLogo,
-    filterMode: 'none',
     url:        'https://www.biketiresdirect.com',
   },
   {
     id:         'castelli',
     name:       'Castelli',
     logo:       castelliLogo,
-    filterMode: 'none',
     url:        'https://www.castelli-cycling.com',
   },
   {
     id:         'athletic',
     name:       'The Athletic Community',
     logo:       athleticLogo,
-    filterMode: 'invert',
     url:        'https://theathleticcommunity.com',
   },
 ]
