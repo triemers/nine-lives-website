@@ -128,7 +128,18 @@
 }
 
 .blog-subscribe {
-  background-color: var(--color-surface);
+  // The artwork texture in both themes, with white type on top
+  --color-fg:    var(--color-on-sunset);
+  --color-muted: color-mix(in srgb, var(--color-on-sunset) 90%, transparent);
+
+  background:
+    url("../assets/images/hero-abstract.webp") center 60% / cover no-repeat,
+    var(--gradient-sunset);
+  color: var(--color-fg);
+
+  @media (max-width: 768px) {
+    background-image: url("../assets/images/hero-abstract-sm.webp"), var(--gradient-sunset);
+  }
 
   &__heading {
     width: 100%;
