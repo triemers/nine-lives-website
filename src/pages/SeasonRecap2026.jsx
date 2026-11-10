@@ -114,7 +114,7 @@ export default function SeasonRecap2026() {
           </div>
         </section>
 
-        <section>
+        <section className="reach-band">
           <h2>People follow along</h2>
           <div className="reach">
             {REACH.map((r) => (
@@ -183,7 +183,11 @@ const CSS = `
             radial-gradient(50% 70% at 85% 75%, #5E2A5Bdd 0%, transparent 60%),
             radial-gradient(70% 90% at 70% 10%, #DF7A60 0%, transparent 60%),
             linear-gradient(115deg, #D33367 0%, #E06C62 45%, #D33367 70%, #5E2A5B 100%);
-  background:var(--bg); color:var(--fg); font-family:var(--font-body); font-size:var(--text-lg); font-weight:var(--weight-regular); line-height:1.65; -webkit-font-smoothing:antialiased;
+  --sunset-flipped: radial-gradient(60% 80% at 85% 80%, #A9CA54cc 0%, transparent 55%),
+            radial-gradient(50% 70% at 15% 25%, #5E2A5Bdd 0%, transparent 60%),
+            radial-gradient(70% 90% at 30% 90%, #DF7A60 0%, transparent 60%),
+            linear-gradient(295deg, #D33367 0%, #E06C62 45%, #D33367 70%, #5E2A5B 100%);
+  background:var(--bg); color:var(--fg); overflow-x:clip; font-family:var(--font-body); font-size:var(--text-lg); font-weight:var(--weight-regular); line-height:1.65; -webkit-font-smoothing:antialiased;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nl-recap{
   --bg:#1E121D; --surface:#2A1729; --fg:#FBF3EF; --muted:#C9AEBB; --rule:#43283F; --accent:#F27A9E; --chip:#3A2137; color-scheme:dark } }
@@ -229,11 +233,12 @@ const CSS = `
 .nl-recap .results b{font-weight:var(--weight-bold)}
 .nl-recap .results .who{color:var(--muted)}
 
-.nl-recap .reach{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px 56px}
-.nl-recap .reach div{display:grid; gap:8px; align-content:start; position:relative}
-.nl-recap .reach div + div::before{content:""; position:absolute; top:0; bottom:0; left:-29px; width:2px; background:var(--plum)}
-.nl-recap .reach .num{font-size:clamp(2.5rem,5vw,4rem); color:var(--accent)}
-.nl-recap .reach span:last-child{color:var(--muted)}
+.nl-recap .reach-band{margin-inline:calc(50% - 50vw); padding:64px max(16px, calc(50vw - 434px)) 72px; background:var(--sunset-flipped); color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+.nl-recap .reach-band .prose{text-shadow:0 1px 12px #5E2A5B66}
+.nl-recap .reach{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1.5px solid #ffffff88}
+.nl-recap .reach div{display:grid; gap:8px; align-content:start; padding:24px 16px 8px 0}
+.nl-recap .reach div + div{padding-left:20px; border-left:1.5px solid #ffffff55}
+.nl-recap .reach .num{font-size:clamp(2.5rem,5vw,4rem)}
 
 .nl-recap .thanks{grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:40px; align-items:center}
 .nl-recap .thanks-text{display:grid; gap:20px}
@@ -250,7 +255,9 @@ const CSS = `
   .nl-recap .stat{padding:18px 0}
   .nl-recap .stat + .stat{padding-left:0; border-left:0; border-top:1.5px solid #ffffff55}
   .nl-recap .reach{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .nl-recap .reach div:nth-child(odd)::before{content:none}
+  .nl-recap .reach-band{padding-block:48px 56px}
+  .nl-recap .reach div:nth-child(3){padding-left:0; border-left:0}
+  .nl-recap .reach div:nth-child(n+3){border-top:1.5px solid #ffffff55}
   .nl-recap .next{grid-template-columns:minmax(0,1fr)}
   .nl-recap .disc{grid-template-columns:minmax(0,1fr); gap:12px}
   .nl-recap .thanks{grid-template-columns:minmax(0,1fr)}
