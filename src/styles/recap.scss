@@ -1,0 +1,399 @@
+// 2026 Season Recap — src/pages/SeasonRecap2026.jsx
+// A light "bone paper" page, unlike the rest of the site, with two animated
+// sunset bands (the cover and the reach section). Everything is scoped to
+// .nl-recap so none of it leaks into other pages.
+
+@use "sass:list";
+
+// ------------------------------------------------------------
+// Sunset band
+// ------------------------------------------------------------
+
+// Animated glow offsets. Registering them lets the browser animate them
+// smoothly; browsers without @property just show a still gradient.
+@property --lx { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+@property --ly { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+@property --lr { syntax: "<number>";     inherits: false; initial-value: 1; }
+@property --lo { syntax: "<percentage>"; inherits: false; initial-value: 80%; }
+@property --px { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+@property --py { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+@property --ax { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+@property --ay { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+@property --ao { syntax: "<percentage>"; inherits: false; initial-value: 100%; }
+
+// Lime swells and brightens like light breaking through water
+@keyframes nl-lime {
+  0%   { --lr: .8;   --lo: 60%; --lx: -4%; --ly: -2%; }
+  100% { --lr: 1.45; --lo: 95%; --lx: 7%;  --ly: 9%; }
+}
+
+// Plum wanders across the band
+@keyframes nl-plum {
+  0%, 100% { --px: 0%;   --py: 0%; }
+  25%      { --px: -16%; --py: -12%; }
+  50%      { --px: -26%; --py: 6%; }
+  75%      { --px: -8%;  --py: 16%; }
+}
+
+// Apricot drifts and shimmers
+@keyframes nl-apricot {
+  0%   { --ax: -10%; --ay: -2%;  --ao: 65%; }
+  100% { --ax: 12%;  --ay: 14%;  --ao: 100%; }
+}
+
+// $lime, $plum, $apricot: where each glow sits at rest (x y).
+// $angle: direction of the magenta-to-plum sweep underneath.
+// $dir: 1 moves the glows with the animation, -1 mirrors the motion.
+// $animation: durations and delays, so the two bands never move in sync.
+@mixin sunset($lime, $plum, $apricot, $angle, $dir, $animation) {
+  // Fallback values. Without them, a browser that can't register the
+  // properties above would drop the whole background.
+  --lx: 0%; --ly: 0%; --lr: 1; --lo: 80%;
+  --px: 0%; --py: 0%;
+  --ax: 0%; --ay: 0%; --ao: 100%;
+
+  background:
+    radial-gradient(
+      calc(60% * var(--lr)) calc(80% * var(--lr))
+      at calc(#{list.nth($lime, 1)} + #{$dir} * var(--lx)) calc(#{list.nth($lime, 2)} + #{$dir} * var(--ly)),
+      color-mix(in srgb, var(--lime) var(--lo), transparent) 0%, transparent 55%
+    ),
+    radial-gradient(
+      50% 70%
+      at calc(#{list.nth($plum, 1)} + #{$dir} * var(--px)) calc(#{list.nth($plum, 2)} + #{$dir} * var(--py)),
+      color-mix(in srgb, var(--plum) 87%, transparent) 0%, transparent 60%
+    ),
+    radial-gradient(
+      70% 90%
+      at calc(#{list.nth($apricot, 1)} + #{$dir} * var(--ax)) calc(#{list.nth($apricot, 2)} + #{$dir} * var(--ay)),
+      color-mix(in srgb, var(--apricot) var(--ao), transparent) 0%, transparent 60%
+    ),
+    linear-gradient($angle, var(--magenta) 0%, var(--coral) 45%, var(--magenta) 70%, var(--plum) 100%);
+  animation: $animation;
+  color: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+
+  @media (prefers-reduced-motion: reduce) { animation: none; }
+  @media print { animation: none; }
+}
+
+// ------------------------------------------------------------
+// Page
+// ------------------------------------------------------------
+
+.nl-recap {
+  --magenta: #D33367;
+  --coral:   #E06C62;
+  --apricot: #DF7A60;
+  --lime:    #A9CA54;
+  --plum:    #5E2A5B;
+  --bone:    #FBF3EF;
+
+  --bg:     var(--bone);
+  --fg:     #1A1614;
+  --muted:  #6B5560;
+  --rule:   #E7D6D4;
+  --accent: #B0244F;
+
+  --line-soft:   rgba(255, 255, 255, .33); // dividers on the sunset bands
+  --text-glow:   0 1px 12px color-mix(in srgb, var(--plum) 40%, transparent);
+
+  --wrap: 900px;
+
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: clip; // the full-width reach band would otherwise cause sideways scroll
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: 1.65;
+
+  // Follows the visitor's device setting
+  @media (prefers-color-scheme: dark) {
+    --bg:     #1E121D;
+    --fg:     #FBF3EF;
+    --muted:  #C9AEBB;
+    --rule:   #43283F;
+    --accent: #F27A9E;
+    color-scheme: dark;
+  }
+
+  h1, h2, h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: var(--weight-black);
+    letter-spacing: var(--tracking-tight);
+    text-transform: uppercase;
+    line-height: 1;
+    text-wrap: balance;
+  }
+
+  h2 { font-size: var(--text-display-lg); }
+  h3 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+  p  { margin: 0; }
+  a  { color: var(--accent); }
+
+  :focus-visible {
+    outline: 3px solid var(--lime);
+    outline-offset: 2px;
+  }
+
+  .wrap {
+    max-width: var(--wrap);
+    margin-inline: auto;
+    padding-inline: max(var(--space-4), env(safe-area-inset-left, 0px)) max(var(--space-4), env(safe-area-inset-right, 0px));
+  }
+
+  .num {
+    font-family: var(--font-display);
+    font-weight: var(--weight-black);
+    letter-spacing: var(--tracking-tight);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .prose { max-width: 60ch; }
+
+  section {
+    display: grid;
+    gap: var(--space-8);
+    min-width: 0;
+  }
+
+  // ---------- Stat rows (cover and reach band) ----------
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+
+    &__item {
+      display: grid;
+      gap: var(--space-2);
+      align-content: start;
+      padding: var(--space-6) var(--space-4) var(--space-2) 0;
+
+      & + .stat-row__item {
+        padding-left: 1.25rem;
+        border-left: 1.5px solid var(--line-soft);
+      }
+    }
+
+    .num { font-size: clamp(2.5rem, 5vw, 4rem); }
+
+    &__label { font-size: var(--text-lg); }
+  }
+
+  // ---------- Cover ----------
+
+  .cover {
+    @include sunset(15% 20%, 85% 75%, 70% 10%, 115deg, 1,
+      (nl-lime 4s ease-in-out infinite alternate,
+       nl-plum 9s ease-in-out infinite,
+       nl-apricot 5s ease-in-out infinite alternate));
+
+    .wrap {
+      display: grid;
+      gap: var(--space-6);
+      padding-block: calc(var(--nav-height) + var(--space-16)) var(--space-6);
+    }
+
+    h1 { font-size: var(--text-display-xl); line-height: .94; }
+
+    .stat-row { --cols: 3; margin-top: var(--space-4); }
+
+    @media (max-width: 768px) {
+      .stat-row { --cols: 1; }
+
+      .stat-row__item {
+        padding: var(--space-4) 0;
+
+        & + .stat-row__item {
+          padding-left: 0;
+          border-left: 0;
+          border-top: 1.5px solid var(--line-soft);
+        }
+      }
+    }
+  }
+
+  .cover__line { display: block; }
+
+  .wordmark {
+    width: min(240px, 60%);
+    aspect-ratio: 10876 / 2381;
+    background: #fff;
+  }
+
+  .sub {
+    max-width: 52ch;
+    font-size: var(--text-xl);
+    line-height: 1.5;
+    text-shadow: var(--text-glow);
+  }
+
+  // ---------- Main column ----------
+
+  main.wrap {
+    display: grid;
+    gap: var(--space-24);
+    padding-block: var(--space-16) var(--space-24);
+
+    @media (max-width: 768px) {
+      gap: var(--space-16);
+      padding-block: var(--space-12) var(--space-16);
+    }
+  }
+
+  // ---------- Results ----------
+
+  .pull {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.2;
+    color: var(--accent);
+  }
+
+  .pull-arrow {
+    font-style: normal;
+    margin-right: .4em;
+  }
+
+  .disciplines {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .disc {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: 3px solid;
+
+    &--cx     { border-color: var(--magenta); }
+    &--gravel { border-color: var(--apricot); }
+    &--mtb    { border-color: var(--lime); }
+
+    @media (max-width: 768px) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-3);
+    }
+  }
+
+  .results {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: var(--space-4);
+      align-items: baseline;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--rule);
+
+      &:last-child { border-bottom: 0; }
+    }
+
+    b { font-weight: var(--weight-bold); }
+  }
+
+  .place {
+    min-width: 3.2ch;
+    font-family: var(--font-display);
+    font-weight: var(--weight-black);
+    font-size: var(--text-xl);
+    line-height: 1;
+    color: var(--fg);
+
+    &--first { color: var(--accent); }
+  }
+
+  .who { color: var(--muted); }
+
+  // ---------- Reach band ----------
+
+  .reach-band {
+    @include sunset(85% 80%, 15% 25%, 30% 90%, 295deg, -1,
+      (nl-lime 4.5s ease-in-out -2s infinite alternate,
+       nl-plum 11s ease-in-out -4.5s infinite reverse,
+       nl-apricot 6s ease-in-out -3s infinite alternate));
+
+    // Break out of the 900px column to the full viewport width, keeping
+    // the content aligned with the column.
+    margin-inline: calc(50% - 50vw);
+    padding: var(--space-16) max(var(--space-4), calc(50vw - var(--wrap) / 2 + var(--space-4))) var(--space-16);
+
+    .prose { text-shadow: var(--text-glow); }
+
+    .stat-row { --cols: 4; }
+
+    @media (max-width: 768px) {
+      padding-block: var(--space-12);
+
+      .stat-row { --cols: 2; }
+
+      .stat-row__item:nth-child(3) {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .stat-row__item:nth-child(n + 3) { border-top: 1.5px solid var(--line-soft); }
+    }
+  }
+
+  // ---------- Thanks ----------
+
+  .thanks {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-12);
+    align-items: center;
+
+    @media (max-width: 768px) { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  .thanks-text {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .kit {
+    display: flex;
+    gap: var(--space-3);
+
+    img {
+      width: 50%;
+      height: auto;
+      background: var(--bone);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+    }
+  }
+
+  // ---------- 2027 ----------
+
+  .next {
+    display: grid;
+    gap: var(--space-12);
+
+    p { max-width: 60ch; }
+  }
+
+  .next-item,
+  .cta {
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+  }
+
+  .cta { margin-top: var(--space-4); }
+
+  @media print {
+    main.wrap { gap: var(--space-12); padding-block: var(--space-6); }
+    section { break-inside: avoid-page; }
+  }
+}

@@ -98,6 +98,7 @@
      LAYOUT
   ---------------------------------------------------------- */
 
+  --nav-height:       60px;
   --container-max:    1280px;
   --container-narrow: 760px;
   --grid-columns:     12;
