@@ -4,10 +4,9 @@
 // Styles are scoped to .nl-recap, so the component won't restyle the rest of your site.
 
 const STATS = [
-  { num: "2×", label: "Singlespeed Cyclocross World Champions" },
+  { num: "2", label: "Singlespeed Cyclocross world titles" },
   { num: "2", label: "Cyclocross Crusade series titles" },
-  { num: "100%", label: "of non-binary races we entered as a team, won" },
-  { num: "17%", label: "average Instagram engagement" },
+  { num: "100%", label: "of the non-binary races we entered, won" },
 ];
 
 const DISCIPLINES = [
@@ -45,7 +44,7 @@ const DISCIPLINES = [
 ];
 
 const REACH = [
-  { num: "70K", label: "social impressions every month" },
+  { num: "70K", label: "social impressions a month" },
   { num: "17%", label: "average Instagram engagement" },
   { num: "66K", label: "views on our top post" },
   { num: "100+", label: "events raced and hosted as a team" },
@@ -75,7 +74,6 @@ export default function SeasonRecap2026({ assetsPath = "assets" }) {
       <header className="cover">
         <div className="wrap">
           <div className="wordmark" role="img" aria-label="Nine Lives" style={mask("wordmark.svg", "left center")} />
-          <span className="tag">2026 Season Recap</span>
           <h1>
             Two world titles. <em>One very good year.</em>
           </h1>
@@ -96,22 +94,12 @@ export default function SeasonRecap2026({ assetsPath = "assets" }) {
 
       <main className="wrap">
         <section>
-          <div className="head">
-            <span className="eyebrow">Results</span>
-            <h2>Fast across three disciplines</h2>
-          </div>
-          <div className="callout">
-            <q>Chloë Spritz won every cyclocross race she entered in 2026.</q>
-            <span className="muted">
-              That includes a world title and the Cyclocross Crusade series in two categories.
-            </span>
-          </div>
+          <h2>The results</h2>
+          <p className="pull">Chloë Spritz won every cyclocross race she entered in 2026.</p>
           <div className="disciplines">
             {DISCIPLINES.map((d) => (
               <div className={`disc ${d.tone}`} key={d.name}>
-                <div>
-                  <h3>{d.name}</h3>
-                </div>
+                <h3>{d.name}</h3>
                 <ul className="results">
                   {d.results.map((r) => (
                     <li key={`${r.race}-${r.category ?? ""}-${r.rider}`}>
@@ -129,10 +117,7 @@ export default function SeasonRecap2026({ assetsPath = "assets" }) {
         </section>
 
         <section>
-          <div className="head">
-            <span className="eyebrow">Reach</span>
-            <h2>People actually look at what we post</h2>
-          </div>
+          <h2>People follow along</h2>
           <div className="reach">
             {REACH.map((r) => (
               <div key={r.label}>
@@ -141,17 +126,15 @@ export default function SeasonRecap2026({ assetsPath = "assets" }) {
               </div>
             ))}
           </div>
-          <p className="muted">Our audience is 50% women, with a median household income of $100K–150K.</p>
+          <p className="prose">Half our audience is women, with a median household income of $100K–150K.</p>
         </section>
 
         <section className="thanks">
-          <div className="head">
-            <span className="eyebrow">Thank you</span>
-            <h2>To all our partners</h2>
-            <p className="lede">
-              Every one of these results was raced by four riders building something new for women and non-binary
-              cyclists. Thank you to every partner who backed us in our first season, and here's a sneak peek at
-              what's coming next: the SS27 sunset print.
+          <div className="thanks-text">
+            <h2>Thank you</h2>
+            <p className="prose">
+              Thank you to every partner who backed us in our first season. Here's a first look at next year's kit:
+              the SS27 sunset print.
             </p>
           </div>
           <div className="kit">
@@ -171,10 +154,7 @@ export default function SeasonRecap2026({ assetsPath = "assets" }) {
         </section>
 
         <section>
-          <div className="head">
-            <span className="eyebrow">2027</span>
-            <h2>More riders, more races, more for you</h2>
-          </div>
+          <h2>Coming in 2027</h2>
           <div className="next">
             {NEXT.map((n) => (
               <div key={n.num}>
@@ -183,15 +163,17 @@ export default function SeasonRecap2026({ assetsPath = "assets" }) {
               </div>
             ))}
           </div>
-          <p className="lede">We'd love to keep racing with you. Let's find 20 minutes before your 2027 plans are set.</p>
+          <p className="prose">
+            We'd love to keep racing with you. Let's find 20 minutes to talk before your 2027 plans are set:{" "}
+            <a href="mailto:ninelivescycling@gmail.com">ninelivescycling@gmail.com</a>
+          </p>
         </section>
       </main>
-
     </div>
   );
 }
 
-// Layout: a Sunset podium cover with the season in four numbers, then a short bone-paper results sheet by discipline.
+// Layout: a Sunset podium cover with the season in three numbers, then a short bone-paper results sheet by discipline.
 const CSS = `
 .nl-recap{
   --magenta:#D33367; --magenta-ink:#B0244F; --coral:#E06C62; --apricot:#DF7A60; --lime:#A9CA54; --plum:#5E2A5B; --night:#2A1729; --bone:#FBF3EF; --ink:#1A1614;
@@ -202,7 +184,7 @@ const CSS = `
             radial-gradient(50% 70% at 85% 75%, #5E2A5Bdd 0%, transparent 60%),
             radial-gradient(70% 90% at 70% 10%, #DF7A60 0%, transparent 60%),
             linear-gradient(115deg, #D33367 0%, #E06C62 45%, #D33367 70%, #5E2A5B 100%);
-  background:var(--bg); color:var(--fg); font:400 16px/1.6 var(--f-body); -webkit-font-smoothing:antialiased;
+  background:var(--bg); color:var(--fg); font:400 17px/1.7 var(--f-body); -webkit-font-smoothing:antialiased;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nl-recap{
   --bg:#1E121D; --surface:#2A1729; --fg:#FBF3EF; --muted:#C9AEBB; --rule:#43283F; --accent:#F27A9E; --chip:#3A2137; color-scheme:dark } }
@@ -210,70 +192,65 @@ const CSS = `
 
 .nl-recap *{box-sizing:border-box}
 .nl-recap h1,.nl-recap h2,.nl-recap h3{font-family:var(--f-display); font-weight:400; text-transform:uppercase; line-height:1.06; text-wrap:balance; margin:0}
-.nl-recap h2{font-size:clamp(1.8rem,4vw,2.5rem)}
-.nl-recap h3{font-size:1.2rem}
-.nl-recap p,.nl-recap ul,.nl-recap ol{margin:0}
+.nl-recap h2{font-size:clamp(1.9rem,4vw,2.6rem)}
+.nl-recap h3{font-size:1.4rem}
+.nl-recap p{margin:0}
 .nl-recap a{color:var(--accent)}
 .nl-recap :focus-visible{outline:3px solid var(--lime); outline-offset:2px}
-.nl-recap .wrap{max-width:1000px; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px))}
-.nl-recap .eyebrow{font:700 .72rem/1 var(--f-body); letter-spacing:.16em; text-transform:uppercase; color:var(--accent)}
+.nl-recap .wrap{max-width:900px; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px))}
 .nl-recap .num{font-family:var(--f-body); font-weight:900; font-style:italic; letter-spacing:-.03em; font-variant-numeric:tabular-nums; line-height:.95}
-.nl-recap .lede{font-size:1.1rem; max-width:62ch}
-.nl-recap .muted{color:var(--muted)}
+.nl-recap .prose{max-width:60ch}
 
 .nl-recap .cover{background:var(--sunset); color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact}
-.nl-recap .cover .wrap{padding-block:40px 0; display:grid; gap:18px}
-.nl-recap .wordmark{width:min(280px,66%); aspect-ratio:10876/2381; background:#fff}
-.nl-recap .cover .tag{justify-self:start; font:800 .74rem/1 var(--f-body); letter-spacing:.16em; text-transform:uppercase; padding:8px 12px; background:var(--ink); color:var(--bone); transform:rotate(-2deg); box-shadow:4px 4px 0 #5E2A5B}
+.nl-recap .cover .wrap{padding-block:56px 0; display:grid; gap:24px}
+.nl-recap .wordmark{width:min(240px,60%); aspect-ratio:10876/2381; background:#fff}
 .nl-recap .cover h1{font-size:clamp(2.8rem,8vw,5.4rem); line-height:.96}
 .nl-recap .cover h1 em{font-style:normal; display:block}
-.nl-recap .cover .sub{max-width:56ch; font-size:1.06rem; text-shadow:0 1px 12px #5E2A5B66}
-.nl-recap .stats{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1.5px solid #ffffff88; margin-top:14px}
-.nl-recap .stat{padding:20px 14px 24px 0; display:grid; gap:6px; align-content:start}
-.nl-recap .stat + .stat{padding-left:18px; border-left:1.5px solid #ffffff55}
-.nl-recap .stat .num{font-size:clamp(2.2rem,5.4vw,3.4rem)}
-.nl-recap .stat span:last-child{font-size:.88rem}
+.nl-recap .cover .sub{max-width:52ch; font-size:1.1rem; text-shadow:0 1px 12px #5E2A5B66}
+.nl-recap .stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1.5px solid #ffffff88; margin-top:16px}
+.nl-recap .stat{padding:24px 16px 32px 0; display:grid; gap:8px; align-content:start}
+.nl-recap .stat + .stat{padding-left:20px; border-left:1.5px solid #ffffff55}
+.nl-recap .stat .num{font-size:clamp(2.4rem,5.4vw,3.4rem)}
+.nl-recap .stat span:last-child{font-size:.95rem}
 
-.nl-recap main.wrap{display:grid; gap:64px; padding-block:48px 64px}
-.nl-recap section{display:grid; gap:20px; min-width:0}
-.nl-recap .head{display:grid; gap:10px}
+.nl-recap main.wrap{display:grid; gap:96px; padding-block:72px 96px}
+.nl-recap section{display:grid; gap:28px; min-width:0}
 
-.nl-recap .disciplines{display:grid; gap:20px}
-.nl-recap .disc{display:grid; grid-template-columns:200px minmax(0,1fr); gap:24px; padding-top:18px; border-top:3px solid var(--magenta)}
+.nl-recap .pull{font-family:var(--f-display); font-size:clamp(1.4rem,3vw,1.8rem); line-height:1.25; max-width:30ch; color:var(--accent)}
+.nl-recap .disciplines{display:grid; gap:40px}
+.nl-recap .disc{display:grid; grid-template-columns:200px minmax(0,1fr); gap:24px; padding-top:20px; border-top:3px solid var(--magenta)}
 .nl-recap .disc.gravel{border-color:var(--apricot)}
 .nl-recap .disc.mtb{border-color:var(--lime)}
-.nl-recap .disc h3{font-size:1.5rem}
-.nl-recap .results{list-style:none; padding:0; display:grid; gap:0}
-.nl-recap .results li{display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; align-items:baseline; padding:10px 0; border-bottom:1px solid var(--rule)}
+.nl-recap .results{list-style:none; margin:0; padding:0; display:grid}
+.nl-recap .results li{display:grid; grid-template-columns:auto minmax(0,1fr); gap:16px; align-items:baseline; padding:12px 0; border-bottom:1px solid var(--rule)}
 .nl-recap .results li:last-child{border-bottom:0}
 .nl-recap .place{font:900 italic 1.25rem/1 var(--f-body); min-width:3.2ch; color:var(--fg)}
 .nl-recap .place.first{color:var(--accent)}
 .nl-recap .results b{font-weight:700}
-.nl-recap .results .who{color:var(--muted); font-size:.92rem}
+.nl-recap .results .who{color:var(--muted)}
 
-.nl-recap .callout{background:var(--surface); border:1px solid var(--rule); border-left:4px solid var(--magenta); border-radius:6px; padding:18px 22px; display:grid; gap:6px}
-.nl-recap .callout q{font-family:var(--f-display); font-size:1.3rem; line-height:1.25; quotes:none}
+.nl-recap .reach{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px}
+.nl-recap .reach div{display:grid; gap:8px; padding-top:16px; border-top:2px solid var(--fg)}
+.nl-recap .reach .num{font-size:clamp(2.2rem,4.6vw,3rem); color:var(--accent)}
+.nl-recap .reach span:last-child{color:var(--muted)}
 
-.nl-recap .reach{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px}
-.nl-recap .reach div{display:grid; gap:6px; padding-top:14px; border-top:2px solid var(--fg)}
-.nl-recap .reach .num{font-size:clamp(2rem,4.6vw,2.8rem); color:var(--accent)}
-.nl-recap .reach span:last-child{font-size:.9rem; color:var(--muted)}
-
-.nl-recap .thanks{display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:32px; align-items:center}
+.nl-recap .thanks{grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:40px; align-items:center}
+.nl-recap .thanks-text{display:grid; gap:20px}
 .nl-recap .kit{display:flex; gap:12px}
 .nl-recap .kit img{width:50%; height:auto; background:var(--bone); border:1px solid var(--rule); border-radius:6px}
-.nl-recap .next{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px}
-.nl-recap .next div{display:grid; gap:6px; align-content:start}
-.nl-recap .next .num{font-size:2.4rem; color:var(--fg)}
-.nl-recap .next p{font-size:.94rem}
-
+.nl-recap .next{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px}
+.nl-recap .next div{display:grid; gap:10px; align-content:start; max-width:40ch}
+.nl-recap .next .num{font-size:2.6rem; color:var(--fg)}
 
 @media (max-width:760px){
-  .nl-recap .stats,.nl-recap .reach{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .nl-recap .stat:nth-child(3){padding-left:0; border-left:0}
-  .nl-recap .stat:nth-child(n+3){border-top:1.5px solid #ffffff55}
-  .nl-recap .disc{grid-template-columns:minmax(0,1fr); gap:8px}
-  .nl-recap .thanks,.nl-recap .next{grid-template-columns:minmax(0,1fr)}
+  .nl-recap main.wrap{gap:72px; padding-block:56px 72px}
+  .nl-recap .stats{grid-template-columns:minmax(0,1fr)}
+  .nl-recap .stat{padding:18px 0}
+  .nl-recap .stat + .stat{padding-left:0; border-left:0; border-top:1.5px solid #ffffff55}
+  .nl-recap .reach{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nl-recap .next{grid-template-columns:minmax(0,1fr)}
+  .nl-recap .disc{grid-template-columns:minmax(0,1fr); gap:12px}
+  .nl-recap .thanks{grid-template-columns:minmax(0,1fr)}
 }
-@media print{ .nl-recap main.wrap{gap:32px; padding-block:24px} .nl-recap section{break-inside:avoid-page} }
+@media print{ .nl-recap main.wrap{gap:40px; padding-block:24px} .nl-recap section{break-inside:avoid-page} }
 `;
