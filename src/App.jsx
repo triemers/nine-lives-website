@@ -24,7 +24,7 @@ export default function App() {
         <Route path="/blog"  element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/merch" element={<Merch />} />
-        <Route path="/recap-2026" element={<SeasonRecap2026 assetsPath="/recap/assets" />} />
+        <Route path="/recap-2026" element={<SeasonRecap2026 />} />
       </Routes>
       <Footer />
     </BrowserRouter>

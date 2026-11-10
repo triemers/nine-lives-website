@@ -1,7 +1,10 @@
 // Nine Lives 2026 Season Recap, as a React component.
-// Usage: <SeasonRecap2026 assetsPath="/recap/assets" />
-// assetsPath is the folder (served by your site) holding wordmark.svg, kit-front.png and kit-back.png.
+// Images live in src/assets/images and are bundled by Vite.
 // Styles are scoped to .nl-recap, so the component won't restyle the rest of your site.
+
+import wordmark from "../assets/images/wordmark.svg";
+import kitFront from "../assets/images/kit-front.png";
+import kitBack from "../assets/images/kit-back.png";
 
 const STATS = [
   { num: "2", label: "Singlespeed Cyclocross world titles" },
@@ -55,9 +58,9 @@ const NEXT = [
   { num: "Mar–Dec", text: "MidSouth and Sea Otter in spring, FoCo Fondo and Gravel Worlds in summer, cyclocross through winter." },
 ];
 
-export default function SeasonRecap2026({ assetsPath = "assets" }) {
-  const mask = (file, position) => {
-    const value = `url(${assetsPath}/${file}) ${position}/contain no-repeat`;
+export default function SeasonRecap2026() {
+  const mask = (url, position) => {
+    const value = `url(${url}) ${position}/contain no-repeat`;
     return { WebkitMask: value, mask: value };
   };
 
@@ -67,7 +70,7 @@ export default function SeasonRecap2026({ assetsPath = "assets" }) {
 
       <header className="cover">
         <div className="wrap">
-          <div className="wordmark" role="img" aria-label="Nine Lives" style={mask("wordmark.svg", "left center")} />
+          <div className="wordmark" role="img" aria-label="Nine Lives" style={mask(wordmark, "left center")} />
           <h1>
             Two world titles. <em>One very good year.</em>
           </h1>
@@ -133,13 +136,13 @@ export default function SeasonRecap2026({ assetsPath = "assets" }) {
           </div>
           <div className="kit">
             <img
-              src={`${assetsPath}/kit-front.png`}
+              src={kitFront}
               alt="SS27 jersey front with the sunset tie-dye print"
               width="844"
               height="1100"
             />
             <img
-              src={`${assetsPath}/kit-back.png`}
+              src={kitBack}
               alt="SS27 jersey back with the Nine Lives wordmark and Cinder the cat"
               width="796"
               height="1034"
@@ -194,7 +197,7 @@ const CSS = `
 .nl-recap .prose{max-width:60ch}
 
 .nl-recap .cover{background:var(--sunset); color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact}
-.nl-recap .cover .wrap{padding-block:56px 0; display:grid; gap:24px}
+.nl-recap .cover .wrap{padding-block:calc(60px + 56px) 0; display:grid; gap:24px}
 .nl-recap .wordmark{width:min(240px,60%); aspect-ratio:10876/2381; background:#fff}
 .nl-recap .cover h1{font-size:var(--text-display-xl); line-height:.94}
 .nl-recap .cover h1 em{font-style:normal; display:block}
