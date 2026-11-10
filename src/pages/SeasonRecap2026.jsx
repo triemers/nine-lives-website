@@ -224,8 +224,9 @@ const CSS = `
 .nl-recap .results b{font-weight:var(--weight-bold)}
 .nl-recap .results .who{color:var(--muted)}
 
-.nl-recap .reach{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px}
-.nl-recap .reach div{display:grid; gap:8px; padding-top:16px; border-top:2px solid var(--fg)}
+.nl-recap .reach{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px 56px}
+.nl-recap .reach div{display:grid; gap:8px; align-content:start; position:relative}
+.nl-recap .reach div + div::before{content:""; position:absolute; top:0; bottom:0; left:-29px; width:2px; background:var(--plum)}
 .nl-recap .reach .num{font-size:clamp(2.5rem,5vw,4rem); color:var(--accent)}
 .nl-recap .reach span:last-child{color:var(--muted)}
 
@@ -243,6 +244,7 @@ const CSS = `
   .nl-recap .stat{padding:18px 0}
   .nl-recap .stat + .stat{padding-left:0; border-left:0; border-top:1.5px solid #ffffff55}
   .nl-recap .reach{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nl-recap .reach div:nth-child(odd)::before{content:none}
   .nl-recap .next{grid-template-columns:minmax(0,1fr)}
   .nl-recap .disc{grid-template-columns:minmax(0,1fr); gap:12px}
   .nl-recap .thanks{grid-template-columns:minmax(0,1fr)}
