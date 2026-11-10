@@ -1,6 +1,13 @@
 .footer {
-  background-color: var(--color-bg);
-  border-top: 1px solid var(--color-rule);
+  // Always plum with bone text, in both themes. Re-pointing the role
+  // variables here keeps every child style below unchanged.
+  --color-fg:     var(--color-bone);
+  --color-muted:  color-mix(in srgb, var(--color-bone) 75%, var(--color-violet));
+  --color-rule:   color-mix(in srgb, var(--color-bone) 20%, var(--color-violet));
+  --color-accent: var(--color-lime);
+
+  background-color: var(--color-violet);
+  color: var(--color-fg);
   padding-top: var(--space-16);
   padding-bottom: var(--space-8);
   padding-inline: 20px;
@@ -116,4 +123,9 @@
     color: var(--color-muted);
     letter-spacing: var(--tracking-wide);
   }
+}
+
+// When a page ends on the bone sponsors band, the footer sits right under it
+.page:has(> .sponsors:last-child) + .footer {
+  margin-top: 0;
 }

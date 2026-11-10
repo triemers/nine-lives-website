@@ -1,5 +1,11 @@
 .sponsors {
+  // Bone band in both themes, with every logo flattened to ink
+  --color-fg:    var(--color-ink);
+  --color-muted: #6B5560;
+
   padding-block: var(--space-16);
+  background-color: var(--color-bone);
+  color: var(--color-fg);
 
   &__heading {
     margin-bottom: var(--space-8);
@@ -28,19 +34,12 @@
     width: auto;
     max-width: 240px;
     object-fit: contain;
-    opacity: 0.8;
-    transition: opacity var(--duration-base) var(--ease-out);
+    // brightness(0) turns every logo solid black; the opacity softens it to ink
+    filter: brightness(0);
+    opacity: 0.9;
 
     @media (max-width: 480px) {
       max-width: 160px;
-    }
-
-    &--invert {
-      filter: var(--logo-filter);
-    }
-
-    &:hover {
-      opacity: 1;
     }
   }
 
