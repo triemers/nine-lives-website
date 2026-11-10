@@ -179,14 +179,6 @@ const CSS = `
 .nl-recap{
   --magenta:#D33367; --magenta-ink:#B0244F; --coral:#E06C62; --apricot:#DF7A60; --lime:#A9CA54; --plum:#5E2A5B; --night:#2A1729; --bone:#FBF3EF; --ink:#1A1614;
   --bg:#FBF3EF; --surface:#FFFFFF; --fg:#1A1614; --muted:#6B5560; --rule:#E7D6D4; --accent:#B0244F; --chip:#F4E4E2;
-  --sunset: radial-gradient(60% 80% at 15% 20%, #A9CA54cc 0%, transparent 55%),
-            radial-gradient(50% 70% at 85% 75%, #5E2A5Bdd 0%, transparent 60%),
-            radial-gradient(70% 90% at 70% 10%, #DF7A60 0%, transparent 60%),
-            linear-gradient(115deg, #D33367 0%, #E06C62 45%, #D33367 70%, #5E2A5B 100%);
-  --sunset-flipped: radial-gradient(60% 80% at 85% 80%, #A9CA54cc 0%, transparent 55%),
-            radial-gradient(50% 70% at 15% 25%, #5E2A5Bdd 0%, transparent 60%),
-            radial-gradient(70% 90% at 30% 90%, #DF7A60 0%, transparent 60%),
-            linear-gradient(295deg, #D33367 0%, #E06C62 45%, #D33367 70%, #5E2A5B 100%);
   background:var(--bg); color:var(--fg); overflow-x:clip; font-family:var(--font-body); font-size:var(--text-lg); font-weight:var(--weight-regular); line-height:1.65; -webkit-font-smoothing:antialiased;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .nl-recap{
@@ -204,7 +196,11 @@ const CSS = `
 .nl-recap .num{font-family:var(--font-display); font-weight:var(--weight-black); letter-spacing:var(--tracking-tight); font-variant-numeric:tabular-nums; line-height:1}
 .nl-recap .prose{max-width:60ch}
 
-.nl-recap .cover{background:var(--sunset); color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+.nl-recap .cover{background:
+    radial-gradient(calc(60% * var(--lr)) calc(80% * var(--lr)) at calc(15% + var(--lx)) calc(20% + var(--ly)), color-mix(in srgb, #A9CA54 var(--lo), transparent) 0%, transparent 55%),
+    radial-gradient(50% 70% at calc(85% + var(--px)) calc(75% + var(--py)), #5E2A5Bdd 0%, transparent 60%),
+    radial-gradient(70% 90% at calc(70% + var(--ax)) calc(10% + var(--ay)), color-mix(in srgb, #DF7A60 var(--ao), transparent) 0%, transparent 60%),
+    linear-gradient(115deg, #D33367 0%, #E06C62 45%, #D33367 70%, #5E2A5B 100%); animation:nl-lime 4s ease-in-out infinite alternate, nl-plum 9s ease-in-out infinite, nl-apricot 5s ease-in-out infinite alternate; color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact}
 .nl-recap .cover .wrap{padding-block:calc(60px + 56px) 0; display:grid; gap:24px}
 .nl-recap .wordmark{width:min(240px,60%); aspect-ratio:10876/2381; background:#fff}
 .nl-recap .cover h1{font-size:var(--text-display-xl); line-height:.94}
@@ -233,7 +229,11 @@ const CSS = `
 .nl-recap .results b{font-weight:var(--weight-bold)}
 .nl-recap .results .who{color:var(--muted)}
 
-.nl-recap .reach-band{margin-inline:calc(50% - 50vw); padding:64px max(16px, calc(50vw - 434px)) 72px; background:var(--sunset-flipped); color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+.nl-recap .reach-band{margin-inline:calc(50% - 50vw); padding:64px max(16px, calc(50vw - 434px)) 72px; background:
+    radial-gradient(calc(60% * var(--lr)) calc(80% * var(--lr)) at calc(85% - var(--lx)) calc(80% - var(--ly)), color-mix(in srgb, #A9CA54 var(--lo), transparent) 0%, transparent 55%),
+    radial-gradient(50% 70% at calc(15% - var(--px)) calc(25% - var(--py)), #5E2A5Bdd 0%, transparent 60%),
+    radial-gradient(70% 90% at calc(30% - var(--ax)) calc(90% - var(--ay)), color-mix(in srgb, #DF7A60 var(--ao), transparent) 0%, transparent 60%),
+    linear-gradient(295deg, #D33367 0%, #E06C62 45%, #D33367 70%, #5E2A5B 100%); animation:nl-lime 4.5s ease-in-out -2s infinite alternate, nl-plum 11s ease-in-out -4.5s infinite reverse, nl-apricot 6s ease-in-out -3s infinite alternate; color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact}
 .nl-recap .reach-band .prose{text-shadow:0 1px 12px #5E2A5B66}
 .nl-recap .reach{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1.5px solid #ffffff88}
 .nl-recap .reach div{display:grid; gap:8px; align-content:start; padding:24px 16px 8px 0}
@@ -262,5 +262,33 @@ const CSS = `
   .nl-recap .disc{grid-template-columns:minmax(0,1fr); gap:12px}
   .nl-recap .thanks{grid-template-columns:minmax(0,1fr)}
 }
-@media print{ .nl-recap main.wrap{gap:40px; padding-block:24px} .nl-recap section{break-inside:avoid-page} }
+@property --lx{syntax:"<percentage>"; inherits:false; initial-value:0%}
+@property --ly{syntax:"<percentage>"; inherits:false; initial-value:0%}
+@property --lr{syntax:"<number>"; inherits:false; initial-value:1}
+@property --lo{syntax:"<percentage>"; inherits:false; initial-value:80%}
+@property --px{syntax:"<percentage>"; inherits:false; initial-value:0%}
+@property --py{syntax:"<percentage>"; inherits:false; initial-value:0%}
+@property --ax{syntax:"<percentage>"; inherits:false; initial-value:0%}
+@property --ay{syntax:"<percentage>"; inherits:false; initial-value:0%}
+@property --ao{syntax:"<percentage>"; inherits:false; initial-value:100%}
+.nl-recap .cover,.nl-recap .reach-band{--lx:0%; --ly:0%; --lr:1; --lo:80%; --px:0%; --py:0%; --ax:0%; --ay:0%; --ao:100%}
+/* Lime swells and brightens like light breaking through water */
+@keyframes nl-lime{
+  0%{--lr:.8; --lo:60%; --lx:-4%; --ly:-2%}
+  100%{--lr:1.45; --lo:95%; --lx:7%; --ly:9%}
+}
+/* Plum wanders slowly across the band */
+@keyframes nl-plum{
+  0%,100%{--px:0%; --py:0%}
+  25%{--px:-16%; --py:-12%}
+  50%{--px:-26%; --py:6%}
+  75%{--px:-8%; --py:16%}
+}
+/* Apricot drifts and shimmers */
+@keyframes nl-apricot{
+  0%{--ax:-10%; --ay:-2%; --ao:65%}
+  100%{--ax:12%; --ay:14%; --ao:100%}
+}
+@media (prefers-reduced-motion: reduce){ .nl-recap .cover,.nl-recap .reach-band{animation:none} }
+@media print{ .nl-recap .cover,.nl-recap .reach-band{animation:none} .nl-recap main.wrap{gap:40px; padding-block:24px} .nl-recap section{break-inside:avoid-page} }
 `;
