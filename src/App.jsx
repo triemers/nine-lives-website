@@ -8,6 +8,7 @@ import Media from './pages/Media'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Merch from './pages/Merch'
+import SeasonRecap2026 from './pages/SeasonRecap2026'
 import './styles/tokens.css'
 import './styles/layout.scss'
 
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/blog"  element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/merch" element={<Merch />} />
+        <Route path="/recap-2026" element={<SeasonRecap2026 assetsPath="/recap/assets" />} />
       </Routes>
       <Footer />
     </BrowserRouter>

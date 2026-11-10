@@ -1,5 +1,4 @@
 import RiderCard from '../components/about/RiderCard'
-import ApplyModule from '../components/about/ApplyModule'
 import Ticker from '../components/shared/Ticker'
 import { RIDERS } from '../data/riders'
 import storyPhoto from '../assets/images/midsouth-2.jpg'
@@ -35,8 +34,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
-      <ApplyModule />
 
       <section className="about-riders">
         <div className="about-riders__header">
